@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Dato(models.Model):
     homoclave = models.CharField(max_length=20, verbose_name="Homoclave")
     nombre_tramite = models.CharField(max_length=150, verbose_name="Nombre del trámite")
@@ -13,7 +14,6 @@ class Dato(models.Model):
 
     def __str__(self):
         return self.nombre_tramite
-
 
 
 class Requisito(models.Model):
@@ -39,6 +39,9 @@ class Formato(models.Model):
 
     def __str__(self):
         return self.nombre_formato
+
+
+
 
 class Paso(models.Model):
     pasos = models.TextField(max_length=250, blank=True, verbose_name="Pasos")
@@ -103,6 +106,7 @@ class Solicitante(models.Model):
     def __str__(self):
         return self.persona_solicitante
 
+
 class ResponsableResolucion(models.Model):
     responsable_tramite = models.CharField(max_length=100,blank=True, verbose_name="Responsable del trámite o servicio")
     nombre = models.CharField(max_length=100, blank=True, verbose_name="Nombre")
@@ -119,6 +123,7 @@ class ResponsableResolucion(models.Model):
     def __str__(self):
         return self.responsable_tramite
 
+
 class FundamentoJuridico(models.Model):
     fundamento_vigencia = models.CharField(max_length=150, blank=True, verbose_name="Fundamento de la vigencia")
     ambito = models.CharField(max_length=100,blank=True, verbose_name="Ámbito")
@@ -128,6 +133,7 @@ class FundamentoJuridico(models.Model):
 
     def __str__(self):
         return self.fundamento_vigencia
+
 
 class FundamentoJuridico2(models.Model):
     fundamento_plazoMaximo = models.CharField(max_length=150, blank=True, verbose_name="Fundamento del plazo máximo")
@@ -139,6 +145,7 @@ class FundamentoJuridico2(models.Model):
     def __str__(self):
         return self.fundamento_plazoMaximo
 
+
 class FundamentoJuridico3(models.Model):
     fundamento_informacion = models.CharField(max_length=150, blank=True, verbose_name="Fundamento del requerimiento de conservar información")
     ambito = models.CharField(max_length=100,blank=True, verbose_name="Ámbito")
@@ -148,6 +155,7 @@ class FundamentoJuridico3(models.Model):
 
     def __str__(self):
         return self.fundamento_informacion
+
 
 class FundamentoJuridico4(models.Model):
     fundamento_inspeccion= models.CharField(max_length=150, blank=True, verbose_name="Fundamento de la inspección, verificación o visita domiciliaria")
@@ -170,6 +178,7 @@ class FundamentoJuridico5(models.Model):
     def __str__(self):
         return self.fundamentoTramiteOServicio
 
+
 class FundamentoJuridico6(models.Model):
     fundamentoCriterio= models.CharField(max_length=150, blank=True, verbose_name="Fundamento del criterio de resolución")
     ambito = models.CharField(max_length=100,blank=True, verbose_name="Ámbito")
@@ -180,6 +189,7 @@ class FundamentoJuridico6(models.Model):
     def __str__(self):
         return self.fundamentoCriterio
 
+
 class FundamentoJuridico7(models.Model):
     fundamento_derechos = models.CharField(max_length=150, blank=True, verbose_name="Fundamento del monto de los derechos")
     ambito = models.CharField(max_length=100,blank=True, verbose_name="Ámbito")
@@ -189,6 +199,7 @@ class FundamentoJuridico7(models.Model):
 
     def __str__(self):
         return self.fundamento_derechos
+
 
 class FundamentoJuridico8(models.Model):
     fundamento_canal = models.CharField(max_length=150, blank=True, verbose_name="Fundamento del canal de atención")
@@ -201,6 +212,7 @@ class FundamentoJuridico8(models.Model):
     def __str__(self):
         return self.fundamento_canal
 
+
 class Inspeccion(models.Model):
     conservar_informacion = models.TextField(blank=True, max_length=500)
     tramite_informacion = models.TextField(max_length=300, blank=True, verbose_name="¿Este trámite o servicio requiere conservar información para fines de acreditación, inspección y verificación con motivo del trámite o servicio?")
@@ -208,12 +220,14 @@ class Inspeccion(models.Model):
     def __str__(self):
         return self.conservar_informacion
 
+
 class Estadistica(models.Model):
     solicitudes_recibidas = models.IntegerField(blank=True, verbose_name="Número de solicitudes recibidas en el año anterior")
     total_solicitudes_recibidas = models.IntegerField(blank=True, verbose_name="Número de solicitudes recibidas")
 
     def __str__(self):
         return  self.solicitudes_recibidas
+
 
 class InformacionAdicional(models.Model):
     informacion = models.CharField(max_length=100, blank=True, verbose_name="Información adicional")

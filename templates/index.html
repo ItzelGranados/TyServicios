@@ -4,13 +4,297 @@
 <head>
     <meta charset="UTF-8">
     <title>Trámites y Servicios</title>
+
+    <style>
+    .title {
+        text-align: center;
+    }
+    </style>
 </head>
 <body>
 
-<h1>Ficha para revisión</h1>
-<h2>Registro municipal de trámites y servicios</h2>
+<h1 class="title">Ficha para revisión</h1>
+<h2 class="title">Registro municipal de trámites y servicios</h2>
 <h3>Secretaría</h3>
 <h3>Dirección</h3>
-<h3>Sección 1 Datos generales</h3>
+
+<h3 class="title"> Sección 1 Datos generales </h3>
+<h3 class="title"> Nombre del trámite </h3>
+
+
+<table>
+    <tr>
+        <th>Homoclave</th>
+        <th> Tipo</th>
+        <th>Tipo de trámite</th>
+        <th>Dependencia</th>
+        <th>Unidad Administrativa</th>
+        <th> Nivel de gobierno </th>
+        <th> Descripción </th>
+        <th> Modalidad </th>
+    </tr>
+
+    <tr>
+        <td>{{ Dato.homoclave }}</td>
+        <td>{{ Dato.nombre_tramite }}</td>
+        <td>{{ Dato.tipo}}</td>
+        <td>{{ Dato.tipo_tramite}}</td>
+        <td>{{ Dato.unidad_administrativa}}</td>
+        <td>{{ Dato.nivel_gobierno}}</td>
+        <td>{{ Dato.descripcion}}</td>
+        <td>{{ Dato.modalidad}}</td>
+    </tr>
+
+</table>
+
+    <h3 class="title"> Sección 2 Requisito </h3>
+
+
+<table>
+    <tr>
+        <th>Nombre del requisito</th>
+        <th> Original o copia</th>
+        <th> Descripción</th>
+        <th>Forma parte del formato</th>
+        <th>Naturaleza</th>
+        <th> Tiempo promedio en conseguir el requisito para su presentación (días)  </th>
+        <th> ¿Es necesario alguna firma, validación, certificación, autorización o visto bueno de un tercero? </th>
+        <th> Nombre de la empresa o persona que lo emite </th>
+        <th> ¿El requisito solicitado es un trámite que se debe realizar con alguna dependencia gubernamental?</th>
+        <th> Nombre de la dependencia, ubicación y medios de contacto </th>
+
+    </tr>
+
+    <tr>
+        <td>{{ Requisito.nombre_requisito}}</td>
+        <td>{{ Requisito.OriginalCopia }}</td>
+        <td>{{ Requisito.descripcion}}</td>
+        <td>{{ Requisito.formato}}</td>
+        <td>{{ Requisito.naturaleza}}</td>
+        <td>{{ Requisito.tiempo_promedio}}</td>
+        <td>{{ Requisito.firma_validacion}}</td>
+        <td>{{ Requisito.persona_emite}}</td>
+        <td>{{ Requisito.requisito_solicitado}}</td>
+        <td>{{ Requisito.nombre_dependencia}}</td>
+    </tr>
+</table>
+
+
+<h3 class="title"> Sección 3 Formato </h3>
+<table>
+    <tr>
+        <th>Nombre del formato</th>
+        <th> Número identificador del formato</th>
+    </tr>
+
+    <tr>
+        <td>{{ Formato.nombre_formato }}</td>
+        <td>{{ Formato.numero_identificador}}</td>
+    </tr>
+</table>
+
+
+    <h3 class="title"> Sección 4 Pasos </h3>
+
+
+<table>
+    <tr>
+        <th>Pasos</th>
+        <th> Modalidades</th>
+    </tr>
+
+    <tr>
+        <td>{{Paso.pasos }}</td>
+        <td>{{Paso.modalidades}}</td>
+
+    </tr>
+    </table>
+
+
+ <h3 class="title"> Sección 5 Cita </h3>
+
+
+<table>
+    <tr>
+        <th>¿Es obligatorio agendar una cita?</th>
+        <th>¿Se puede agendar una cita?</th>
+         <th>Medio para solicitar la cita</th>
+    </tr>
+
+    <tr>
+        <td>{{Cita.agendar_cita }}</td>
+        <td>{{Cita.realizar_tramite}}</td>
+        <td>{{Cita.medio_cita}}</td>
+    </tr>
+    </table>
+
+
+<h3 class="title"> Sección 6 Costos</h3>
+
+
+<table>
+    <tr>
+        <th>Monto</th>
+        <th>Moneda en la que se realizó el pago</th>
+         <th>Metodología utilizada para el cálculo del monto</th>
+        <th>¿En dónde puedo realizar el pago?</th>
+        <th>Forma de pago</th>
+        <th>Etapa del trámite o servicio en que se realiza o se puede realizar el trámite</th>
+        <th>Vigencia de la línea de captura para realizar el pago en caso de requerirla</th>
+    </tr>
+
+    <tr>
+        <td>{{Moneda.monto }}</td>
+        <td>{{Moneda.moneda_pago}}</td>
+        <td>{{Moneda.metodologia_pago}}</td>
+        <td>{{Moneda.realizar_pago}}</td>
+        <td>{{Moneda.forma_pago}}</td>
+        <td>{{Moneda.etapa_tramite}}</td>
+         <td>{{Moneda.vigencia_pago}}</td>
+
+    </tr>
+    </table>
+
+<h3 class="title"> Sección 7 Tiempos</h3>
+
+
+<table>
+    <tr>
+        <th>Tiempo que tiene la dependencia para resolver</th>
+        <th>Plazo que tiene la dependencia para prevenir</th>
+        <th>Plazo que tiene el usuario para responder la prevención</th>
+        <th>Derecho del usuario ante la falta de respuesta</th>
+    </tr>
+
+    <tr>
+        <td>{{Tiempo.tiempo_resolucion }}</td>
+        <td>{{Tiempo.plazo_prevenir}}</td>
+        <td>{{Tiempo.plazo_responder}}</td>
+        <td>{{Tiempo.derecho_respuesta}}</td>
+    </tr>
+    </table>
+
+<h3 class="title"> Sección 8 Vigencia</h3>
+
+
+<table>
+    <tr>
+        <th>Tipo de resolución</th>
+        <th>Vigencia</th>
+
+    </tr>
+
+    <tr>
+        <td>{{Vigencia.tipo_resolucion}}</td>
+        <td>{{Vigencia.vigencia}}</td>
+    </tr>
+    </table>
+
+
+<h3 class="title"> Sección 9 Solicitante</h3>
+
+<table>
+    <tr>
+        <th>¿Quién puede solicitarlo? </th>
+        <th>¿Para qué sirve realizar este trámite?</th>
+        <th>¿En qué caso se debe solicitar el trámite o servicio?</th>
+        <th>Actividad económica que está vinculada al trámite o servicio</th>
+        <th>Detalle</th>
+        <th>Subsector</th>
+        <th>Rama</th>
+        <th>Subrama</th>
+        <th>Clase</th>
+        <th>La resolución de este trámite está vinculada con la presentación de otros trámites</th>
+        <th>Liga del trámite con que está vincualdo</th>
+        <th>La resolución es requisito de otro trámite</th>
+        <th>Liga de la resolución del trámite</th>
+    </tr>
+
+    <tr>
+        <td>{{Solicitante.persona_solicitante}}</td>
+        <td>{{Solicitante.funcionalidad_tramite}}</td>
+        <td>{{Solicitante.caso_solicitud}}</td>
+        <td>{{Solicitante.actividad_economica}}</td>
+        <td>{{Solicitante.detalle}}</td>
+        <td>{{Solicitante.subsector}}</td>
+        <td>{{Solicitante.rama}}</td>
+        <td>{{Solicitante.subrama}}</td>
+        <td>{{Solicitante.clase}}</td>
+        <td>{{Solicitante.resolucion}}</td>
+        <td>{{Solicitante.liga_tramite}}</td>
+        <td>{{Solicitante.resolucion_requisito}}</td>
+        <td>{{Solicitante.liga_resolucion}}</td>
+
+    </tr>
+    </table>
+
+
+<h3 class="title"> Sección 10 Datos del responsable de la resolución</h3>
+
+<table>
+    <tr>
+        <th>Responsable del trámite o servicio</th>
+        <th>Nombre</th>
+        <th>Rol del funcionario</th>
+        <th>Cargo</th>
+        <th>Correo electrónico</th>
+        <th>Otro</th>
+        <th>Teléfono</th>
+        <th>Extensión</th>
+        <th>Datos de la oficina del responsable del trámite</th>
+        <th>Órgano interno de control</th>
+        <th>Datos de contacto para quejas y denuncias</th>
+
+    </tr>
+
+    <tr>
+        <td>{{ResponsableResolucion.responsable_tramite}}</td>
+        <td>{{ResponsableResolucion.nombre}}</td>
+        <td>{{ResponsableResolucion.rol_funcionario}}</td>
+        <td>{{ResponsableResolucion.cargo}}</td>
+        <td>{{ResponsableResolucion.correo_electronico}}</td>
+        <td>{{ResponsableResolucion.otro}}</td>
+        <td>{{ResponsableResolucion.telefono}}</td>
+        <td>{{ResponsableResolucion.extension}}</td>
+        <td>{{ResponsableResolucion.datos_responsable}}</td>
+        <td>{{ResponsableResolucion.organo}}</td>
+        <td>{{ResponsableResolucion.quejas_denuncias}}</td>
+    </tr>
+    </table>
+
+<h3 class="title"> Sección 11 Fundamentos Jurídicos </h3>
+
+<table>
+    <tr>
+        <th>Responsable del trámite o servicio</th>
+        <th>Nombre</th>
+        <th>Rol del funcionario</th>
+        <th>Cargo</th>
+        <th>Correo electrónico</th>
+        <th>Otro</th>
+        <th>Teléfono</th>
+        <th>Extensión</th>
+        <th>Datos de la oficina del responsable del trámite</th>
+        <th>Órgano interno de control</th>
+        <th>Datos de contacto para quejas y denuncias</th>
+
+    </tr>
+
+    <tr>
+        <td>{{ResponsableResolucion.responsable_tramite}}</td>
+        <td>{{ResponsableResolucion.nombre}}</td>
+        <td>{{ResponsableResolucion.rol_funcionario}}</td>
+        <td>{{ResponsableResolucion.cargo}}</td>
+        <td>{{ResponsableResolucion.correo_electronico}}</td>
+        <td>{{ResponsableResolucion.otro}}</td>
+        <td>{{ResponsableResolucion.telefono}}</td>
+        <td>{{ResponsableResolucion.extension}}</td>
+        <td>{{ResponsableResolucion.datos_responsable}}</td>
+        <td>{{ResponsableResolucion.organo}}</td>
+        <td>{{ResponsableResolucion.quejas_denuncias}}</td>
+    </tr>
+    </table>
+
+
 </body>
 </html>
