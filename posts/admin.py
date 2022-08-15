@@ -1,5 +1,7 @@
 from django.contrib import admin
-from .models import Dato, Requisito, Formato, Paso, Cita, Costo, Tiempo, Vigencia, Solicitante, ResponsableResolucion, FundamentoJuridico, FundamentoJuridico2, FundamentoJuridico3, FundamentoJuridico4, FundamentoJuridico5, FundamentoJuridico6, FundamentoJuridico7, FundamentoJuridico8, Inspeccion, Estadistica, InformacionAdicional
+from .models import Dato, Requisito, Formato, Paso, Cita, Costo, Tiempo, Vigencia, Solicitante, ResponsableResolucion, \
+    FundamentoJuridico, FundamentoJuridico2, FundamentoJuridico3, FundamentoJuridico4, FundamentoJuridico5, FundamentoJuridico6, \
+    FundamentoJuridico7, FundamentoJuridico8, Inspeccion, Estadistica, InformacionAdicional
 
 # Register your models here.
 admin.site.register(Dato)

@@ -1,7 +1,10 @@
+import uuid
+
 from django.db import models
 
 
 class Dato(models.Model):
+    id = models.UUIDField(primary_key=True, default=uuid.UUID, editable=False)
     homoclave = models.CharField(max_length=20, verbose_name="Homoclave")
     nombre_tramite = models.CharField(max_length=150, verbose_name="Nombre del trámite")
     tipo = models.CharField(max_length=30, verbose_name="Tipo")
@@ -17,13 +20,12 @@ class Dato(models.Model):
 
 
 class Requisito(models.Model):
-    requisitos = models.TextField(max_length=300, blank=True, verbose_name="Requisitos")
     nombre_requisito = models.CharField(max_length=200, blank=True, verbose_name="Nombre del requisito")
-    OriginalCopia = models.TextField(max_length=300, blank=True, verbose_name="Original o copia")
+    OriginalCopia = models.CharField(max_length=50, blank=True, verbose_name="Original o copia")
     descripcion = models.TextField(max_length=500, blank=True, verbose_name="Descripción")
     formato = models.CharField(max_length=20, blank=True, verbose_name="Forma parte del formato")
     naturaleza = models.CharField(max_length=20, blank=True, verbose_name="Naturaleza")
-    tiempo_promedio = models.IntegerField(blank=True, verbose_name="Tiempo promedio en conseguir el requisito para su presentación (días)")
+    tiempo_promedio = models.IntegerField(blank=True, verbose_name="Tiempo promedio en conseguir el requisito para su presentación (horas)")
     firma_validacion = models.CharField(max_length=20, blank=True, verbose_name="¿Es necesario alguna firma, validación, certificación, autorización o visto bueno de un tercero?" )
     persona_emite = models.CharField(max_length=100, blank=True, verbose_name="Nombre de la empresa o persona que lo emite")
     requisito_solicitado = models.CharField(max_length=20, blank=True, verbose_name="¿El requisito solicitado es un trámite que se debe realizar con alguna dependencia gubernamental?")
@@ -237,4 +239,10 @@ class InformacionAdicional(models.Model):
 
     def __str__(self):
         return self.informacion
+
+
+
 # Create your models here.
+
+
+
