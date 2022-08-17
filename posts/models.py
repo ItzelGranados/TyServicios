@@ -91,7 +91,6 @@ class Requisito(models.Model):
     def __str__(self):
         return self.nombre_requisito
 
-
 class DatoGeneral(models.Model):
     homoclave = models.CharField(max_length=20, verbose_name="Homoclave")
     nombre_tramite = models.CharField(max_length=150, verbose_name="Nombre del trámite")

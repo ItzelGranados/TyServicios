@@ -2,6 +2,7 @@
 <html lang="es">
 
 <head>
+
     <meta charset="UTF-8">
     <title>Trámites y Servicios</title>
 
@@ -11,6 +12,8 @@
     }
     </style>
 </head>
+
+
 <body>
 
 <h1 class="title">Ficha para revisión</h1>
@@ -19,15 +22,15 @@
 <h3>Dirección</h3>
 
 <h3 class="title"> Sección 1 Datos Generales </h3>
-<h3 class="title"> Nombre del trámite </h3>
+<h3 class="title"> {{ DatoGeneral.nombre_tramite }} </h3>
 
 <table>
     <tr>
         <th>Homoclave</th>
         <th> Tipo</th>
-        <th>Tipo de trámite</th>
-        <th>Dependencia</th>
-        <th>Unidad Administrativa</th>
+        <th> Tipo de trámite</th>
+        <th> Dependencia</th>
+        <th> Unidad Administrativa</th>
         <th> Nivel de gobierno </th>
         <th> Descripción </th>
         <th> Modalidad </th>
@@ -35,7 +38,6 @@
 
     <tr>
         <td>{{ DatoGeneral.homoclave }}</td>
-        <td>{{ DatoGeneral.nombre_tramite }}</td>
         <td>{{ DatoGeneral.tipo}}</td>
         <td>{{ DatoGeneral.tipo_tramite}}</td>
         <td>{{ DatoGeneral.unidad_administrativa}}</td>
@@ -67,7 +69,7 @@
     <tr>
         <td>{{ DatoGeneral.nombre_requisito}}</td>
         <td>{{ DatoGeneral.original_copia }}</td>
-        <td>{{ DatoGeneral.descripcion}}</td>
+        <td>{{ DatoGeneral.descripcion_requisito}}</td>
         <td>{{ DatoGeneral.formato}}</td>
         <td>{{ DatoGeneral.naturaleza}}</td>
         <td>{{ DatoGeneral.tiempo_promedio}}</td>
