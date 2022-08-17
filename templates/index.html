@@ -18,7 +18,7 @@
 <h3>Secretaría</h3>
 <h3>Dirección</h3>
 
-<h3 class="title"> Sección 1 Datos generales </h3>
+<h3 class="title"> Sección 1 Datos Generales </h3>
 <h3 class="title"> Nombre del trámite </h3>
 
 <table>
@@ -34,14 +34,14 @@
     </tr>
 
     <tr>
-        <td>{{ Dato.homoclave }}</td>
-        <td>{{ Dato.nombre_tramite }}</td>
-        <td>{{ Dato.tipo}}</td>
-        <td>{{ Dato.tipo_tramite}}</td>
-        <td>{{ Dato.unidad_administrativa}}</td>
-        <td>{{ Dato.nivel_gobierno}}</td>
-        <td>{{ Dato.descripcion}}</td>
-        <td>{{ Dato.modalidad}}</td>
+        <td>{{ DatoGeneral.homoclave }}</td>
+        <td>{{ DatoGeneral.nombre_tramite }}</td>
+        <td>{{ DatoGeneral.tipo}}</td>
+        <td>{{ DatoGeneral.tipo_tramite}}</td>
+        <td>{{ DatoGeneral.unidad_administrativa}}</td>
+        <td>{{ DatoGeneral.nivel_gobierno}}</td>
+        <td>{{ DatoGeneral.descripcion}}</td>
+        <td>{{ DatoGeneral.modalidad}}</td>
     </tr>
 
 </table>
@@ -65,16 +65,16 @@
     </tr>
 
     <tr>
-        <td>{{ Requisito.nombre_requisito}}</td>
-        <td>{{ Requisito.OriginalCopia }}</td>
-        <td>{{ Requisito.descripcion}}</td>
-        <td>{{ Requisito.formato}}</td>
-        <td>{{ Requisito.naturaleza}}</td>
-        <td>{{ Requisito.tiempo_promedio}}</td>
-        <td>{{ Requisito.firma_validacion}}</td>
-        <td>{{ Requisito.persona_emite}}</td>
-        <td>{{ Requisito.requisito_solicitado}}</td>
-        <td>{{ Requisito.nombre_dependencia}}</td>
+        <td>{{ DatoGeneral.nombre_requisito}}</td>
+        <td>{{ DatoGeneral.original_copia }}</td>
+        <td>{{ DatoGeneral.descripcion}}</td>
+        <td>{{ DatoGeneral.formato}}</td>
+        <td>{{ DatoGeneral.naturaleza}}</td>
+        <td>{{ DatoGeneral.tiempo_promedio}}</td>
+        <td>{{ DatoGeneral.firma_validacion}}</td>
+        <td>{{ DatoGeneral.persona_emite}}</td>
+        <td>{{ DatoGeneral.requisito_solicitado}}</td>
+        <td>{{ DatoGeneral.nombre_dependencia}}</td>
     </tr>
 </table>
 
@@ -87,8 +87,8 @@
     </tr>
 
     <tr>
-        <td>{{ Formato.nombre_formato }}</td>
-        <td>{{ Formato.numero_identificador}}</td>
+        <td>{{ DatoGeneral.nombre_formato }}</td>
+        <td>{{ DatoGeneral.numero_identificador}}</td>
     </tr>
 </table>
 
@@ -103,8 +103,8 @@
     </tr>
 
     <tr>
-        <td>{{Paso.pasos }}</td>
-        <td>{{Paso.modalidades}}</td>
+        <td>{{DatoGeneral.pasos }}</td>
+        <td>{{DatoGeneral.modalidades}}</td>
 
     </tr>
     </table>
@@ -121,9 +121,9 @@
     </tr>
 
     <tr>
-        <td>{{Cita.agendar_cita }}</td>
-        <td>{{Cita.realizar_tramite}}</td>
-        <td>{{Cita.medio_cita}}</td>
+        <td>{{DatoGeneral.agendar_cita }}</td>
+        <td>{{DatoGeneral.realizar_tramite}}</td>
+        <td>{{DatoGeneral.medio_cita}}</td>
     </tr>
     </table>
 
@@ -143,13 +143,13 @@
     </tr>
 
     <tr>
-        <td>{{Moneda.monto }}</td>
-        <td>{{Moneda.moneda_pago}}</td>
-        <td>{{Moneda.metodologia_pago}}</td>
-        <td>{{Moneda.realizar_pago}}</td>
-        <td>{{Moneda.forma_pago}}</td>
-        <td>{{Moneda.etapa_tramite}}</td>
-         <td>{{Moneda.vigencia_pago}}</td>
+        <td>{{DatoGeneral.monto }}</td>
+        <td>{{DatoGeneral.moneda_pago}}</td>
+        <td>{{DatoGeneral.metodologia_pago}}</td>
+        <td>{{DatoGeneral.realizar_pago}}</td>
+        <td>{{DatoGeneral.forma_pago}}</td>
+        <td>{{DatoGeneral.etapa_tramite}}</td>
+         <td>{{DatoGeneral.vigencia_pago}}</td>
 
     </tr>
     </table>
@@ -166,10 +166,10 @@
     </tr>
 
     <tr>
-        <td>{{Tiempo.tiempo_resolucion }}</td>
-        <td>{{Tiempo.plazo_prevenir}}</td>
-        <td>{{Tiempo.plazo_responder}}</td>
-        <td>{{Tiempo.derecho_respuesta}}</td>
+        <td>{{DatoGeneral.tiempo_resolucion }}</td>
+        <td>{{DatoGeneral.plazo_prevenir}}</td>
+        <td>{{DatoGeneral.plazo_responder}}</td>
+        <td>{{DatoGeneral.derecho_respuesta}}</td>
     </tr>
     </table>
 
@@ -184,8 +184,8 @@
     </tr>
 
     <tr>
-        <td>{{Vigencia.tipo_resolucion}}</td>
-        <td>{{Vigencia.vigencia}}</td>
+        <td>{{DatoGeneral.tipo_resolucion}}</td>
+        <td>{{DatoGeneral.vigencia}}</td>
     </tr>
     </table>
 
@@ -210,25 +210,25 @@
     </tr>
 
     <tr>
-        <td>{{Solicitante.persona_solicitante}}</td>
-        <td>{{Solicitante.funcionalidad_tramite}}</td>
-        <td>{{Solicitante.caso_solicitud}}</td>
-        <td>{{Solicitante.actividad_economica}}</td>
-        <td>{{Solicitante.detalle}}</td>
-        <td>{{Solicitante.subsector}}</td>
-        <td>{{Solicitante.rama}}</td>
-        <td>{{Solicitante.subrama}}</td>
-        <td>{{Solicitante.clase}}</td>
-        <td>{{Solicitante.resolucion}}</td>
-        <td>{{Solicitante.liga_tramite}}</td>
-        <td>{{Solicitante.resolucion_requisito}}</td>
-        <td>{{Solicitante.liga_resolucion}}</td>
+        <td>{{DatoGeneral.persona_solicitante}}</td>
+        <td>{{DatoGeneral.funcionalidad_tramite}}</td>
+        <td>{{DatoGeneral.caso_solicitud}}</td>
+        <td>{{DatoGeneral.actividad_economica}}</td>
+        <td>{{DatoGeneral.detalle}}</td>
+        <td>{{DatoGeneral.subsector}}</td>
+        <td>{{DatoGeneral.rama}}</td>
+        <td>{{DatoGeneral.subrama}}</td>
+        <td>{{DatoGeneral.clase}}</td>
+        <td>{{DatoGeneral.resolucion}}</td>
+        <td>{{DatoGeneral.liga_tramite}}</td>
+        <td>{{DatoGeneral.resolucion_requisito}}</td>
+        <td>{{DatoGeneral.liga_resolucion}}</td>
 
     </tr>
     </table>
 
 
-<h3 class="title"> Sección 10 Datos del responsable de la resolución</h3>
+<h3 class="title"> Sección 10 DatoGenerals del responsable de la resolución</h3>
 
 <table>
     <tr>
@@ -240,24 +240,24 @@
         <th>Otro</th>
         <th>Teléfono</th>
         <th>Extensión</th>
-        <th>Datos de la oficina del responsable del trámite</th>
+        <th>DatoGenerals de la oficina del responsable del trámite</th>
         <th>Órgano interno de control</th>
-        <th>Datos de contacto para quejas y denuncias</th>
+        <th>DatoGenerals de contacto para quejas y denuncias</th>
 
     </tr>
 
     <tr>
-        <td>{{ResponsableResolucion.responsable_tramite}}</td>
-        <td>{{ResponsableResolucion.nombre}}</td>
-        <td>{{ResponsableResolucion.rol_funcionario}}</td>
-        <td>{{ResponsableResolucion.cargo}}</td>
-        <td>{{ResponsableResolucion.correo_electronico}}</td>
-        <td>{{ResponsableResolucion.otro}}</td>
-        <td>{{ResponsableResolucion.telefono}}</td>
-        <td>{{ResponsableResolucion.extension}}</td>
-        <td>{{ResponsableResolucion.datos_responsable}}</td>
-        <td>{{ResponsableResolucion.organo}}</td>
-        <td>{{ResponsableResolucion.quejas_denuncias}}</td>
+        <td>{{DatoGeneral.responsable_tramite}}</td>
+        <td>{{DatoGeneral.nombre}}</td>
+        <td>{{DatoGeneral.rol_funcionario}}</td>
+        <td>{{DatoGeneral.cargo}}</td>
+        <td>{{DatoGeneral.correo_electronico}}</td>
+        <td>{{DatoGeneral.otro}}</td>
+        <td>{{DatoGeneral.telefono}}</td>
+        <td>{{DatoGeneral.extension}}</td>
+        <td>{{DatoGeneral.DatoGenerals_responsable}}</td>
+        <td>{{DatoGeneral.organo}}</td>
+        <td>{{DatoGeneral.quejas_denuncias}}</td>
     </tr>
     </table>
 
