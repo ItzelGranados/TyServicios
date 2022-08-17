@@ -9,14 +9,14 @@ class Ambito(models.Model):
 
 
 class FormaPago(models.Model):
-    nombre = models.CharField(max_length=10)
+    nombre = models.CharField(max_length=60)
 
     def __str__(self):
         return self.nombre
 
 
 class Modalidad(models.Model):
-    nombre = models.CharField(max_length=10)
+    nombre = models.CharField(max_length=50)
 
     def __str__(self):
         return self.nombre
@@ -30,56 +30,56 @@ class NivelDeGobierno(models.Model):
 
 
 class OrdenamientoJuridico(models.Model):
-    nombre = models.CharField(max_length=10)
+    nombre = models.CharField(max_length=50)
 
     def __str__(self):
         return self.nombre
 
 
 class OriginalCopia(models.Model):
-    nombre = models.CharField(max_length=10)
+    nombre = models.CharField(max_length=20)
 
     def __str__(self):
         return self.nombre
 
 
 class Paso(models.Model):
-    nombre = models.CharField(max_length=10)
+    nombre = models.CharField(max_length=50)
 
     def __str__(self):
         return self.nombre
 
 
 class Tipo(models.Model):
-    nombre = models.CharField(max_length=10, verbose_name="Tipo", null=True, blank=True)
+    nombre = models.CharField(max_length=50, verbose_name="Tipo", null=True, blank=True)
 
     def __str__(self):
         return self.nombre
 
 
 class TipoTramite(models.Model):
-    nombre = models.CharField(max_length=10)
+    nombre = models.CharField(max_length=50)
 
     def __str__(self):
         return self.nombre
 
 
 class TipoResolucion(models.Model):
-    nombre = models.CharField(max_length=10)
+    nombre = models.CharField(max_length=50)
 
     def __str__(self):
         return self.nombre
 
 
 class TipoSolicitante(models.Model):
-    nombre = models.CharField(max_length=10)
+    nombre = models.CharField(max_length=50)
 
     def __str__(self):
         return self.nombre
 
 
 class UbicacionesPago(models.Model):
-    nombre = models.CharField(max_length=10)
+    nombre = models.CharField(max_length=50)
 
     def __str__(self):
         return self.nombre
