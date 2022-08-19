@@ -92,7 +92,9 @@ class Requisito(models.Model):
         return self.nombre_requisito
 
 class DatoGeneral(models.Model):
-    homoclave = models.CharField(max_length=20, verbose_name="Homoclave")
+
+    homoclave_anterior = models.CharField(max_length=40, blank=True, null=True, verbose_name="Homoclave anterior")
+    homoclave = models.CharField(max_length=40, blank=True, null=True, verbose_name="Homoclave")
     nombre_tramite = models.CharField(max_length=150, verbose_name="Nombre del trámite")
     tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
     tipo_tramite = models.ForeignKey(TipoTramite, on_delete=models.PROTECT, verbose_name="Tipo de trámite")
@@ -100,9 +102,10 @@ class DatoGeneral(models.Model):
     unidad_administrativa = models.TextField(max_length=300, verbose_name="Unidad Administrativa")
     nivel_gobierno = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, verbose_name="Nivel de gobierno")
     descripcion = models.TextField(max_length=500, verbose_name="Descripción")
-    modalidad = models.ForeignKey(Ambito, on_delete=models.PROTECT, verbose_name="Modalidad")
+    modalidad = models.CharField(max_length=100, blank=True, null=True, verbose_name="Modalidad")
 
-    nombre_requisito = models.ForeignKey(Requisito, on_delete=models.PROTECT)
+    requisito = models.CharField(max_length=200, blank=True, null=True, verbose_name="Requisitos")
+    nombre_requisito = models.ForeignKey(Requisito, on_delete=models.PROTECT, blank=True, null=True)
     original_copia = models.ForeignKey(OriginalCopia, on_delete=models.PROTECT, null=True, blank=True,
                                        verbose_name="Original o copia")
     descripcion_requisito = models.TextField(max_length=300, null=True, blank=True, verbose_name="Descripción")
@@ -120,7 +123,7 @@ class DatoGeneral(models.Model):
                                           verbose_name="Nombre de la dependencia, ubicación y medios de contacto")
 
     nombre_formato = models.CharField(max_length=100, null=True, blank=True, verbose_name="Nombre del formato")
-    numero_identificador = models.IntegerField(verbose_name="Número de identificador del formato")
+    numero_identificador = models.CharField(max_length=100, blank=True, null=True, verbose_name ="Número de identificador del formato")
 
     pasos = models.ForeignKey(Paso, on_delete=models.PROTECT, null=True, blank=True, verbose_name="Pasos")
     modalidades = models.CharField(max_length=100, verbose_name="Modalidades")
@@ -130,7 +133,7 @@ class DatoGeneral(models.Model):
                                                  verbose_name="¿Se puede agendar una cita para realizar un trámite?")
     medio_cita = models.TextField(max_length=500, null=True, blank=True, verbose_name="Medio para solicitar la cita")
 
-    monto = models.IntegerField(verbose_name="Monto")
+    monto = models.CharField(max_length=100, null=True, blank=True, verbose_name="Monto")
     moneda_pago = models.CharField(max_length=20, verbose_name="Moneda en la que se realiza el pago")
     metodologia_monto = models.TextField(max_length=300, verbose_name="Metodología para cálculo del monto")
     realizar_pago = models.TextField(max_length=250, null=True, blank=True,
@@ -138,7 +141,7 @@ class DatoGeneral(models.Model):
     forma_pago = models.CharField(max_length=100, null=True, blank=True, verbose_name="Forma de pago")
     etapa_tramite = models.CharField(max_length=100, null=True, blank=True,
                                      verbose_name="Etapa del trámite o servicio en que se realiza o se puede realizar el trámite")
-    vigencia_pago = models.CharField(max_length=30, null=True, blank=True,
+    vigencia_pago = models.CharField(max_length=100, null=True, blank=True,
                                      verbose_name="Vigencia de la línea de captura para realizar el pago en caso de requerirla")
 
     tiempo_resolucion = models.IntegerField(null=True, blank=True,
@@ -150,13 +153,13 @@ class DatoGeneral(models.Model):
     derecho_respuesta = models.CharField(max_length=30, null=True, blank=True,
                                          verbose_name="Derecho del usuario ante la falta de respuesta")
 
-    tipo_resolucion = models.CharField(max_length=20, verbose_name="Tipo de resolución")
-    vigencia = models.CharField(max_length=30, null=True, blank=True, verbose_name="Vigencia")
+    tipo_resolucion = models.CharField(max_length=100,null=True, blank=True, verbose_name="Tipo de resolución")
+    vigencia = models.CharField(max_length=100, null=True, blank=True, verbose_name="Vigencia")
 
     persona_solicitante = models.TextField(max_length=300, verbose_name="¿Quién puede solicitarlo?")
     funcionalidad_tramite = models.TextField(max_length=400, null=True, blank=True,
                                              verbose_name="¿Para qué sirve realizar este trámite?")
-    caso_solicitud = models.CharField(max_length=150, null=True, blank=True,
+    caso_solicitud = models.TextField(max_length=500, null=True, blank=True,
                                       verbose_name="¿En qué caso se debe solicitar el trámite o servicio?")
     actividad_economica = models.TextField(max_length=300, null=True, blank=True,
                                            verbose_name="Actividad económica que está vinculada al trámite o servicio")
@@ -177,8 +180,8 @@ class DatoGeneral(models.Model):
     responsable_tramite = models.CharField(max_length=100, null=True, blank=True,
                                            verbose_name="Responsable del trámite o servicio")
     nombre = models.CharField(max_length=100, null=True, blank=True, verbose_name="Nombre")
-    rol_funcionario = models.CharField(max_length=30, null=True, blank=True, verbose_name="Rol del funcionario")
-    cargo = models.CharField(max_length=50, null=True, blank=True, verbose_name="Cargo")
+    rol_funcionario = models.CharField(max_length=100, null=True, blank=True, verbose_name="Rol del funcionario")
+    cargo = models.CharField(max_length=200, null=True, blank=True, verbose_name="Cargo")
     correo_electronico = models.EmailField(max_length=100, null=True, blank=True, verbose_name="Correo electrónico")
     otro = models.CharField(max_length=30, null=True, blank=True, verbose_name="Otro")
     telefono = models.IntegerField(null=True, blank=True, verbose_name="Teléfono")
@@ -189,62 +192,62 @@ class DatoGeneral(models.Model):
     quejas_denuncias = models.TextField(max_length=400, null=True, blank=True,
                                         verbose_name="Datos de contacto para quejas y denuncias")
 
-    fundamento_vigencia = models.CharField(max_length=150, null=True, blank=True,
+    fundamento_vigencia = models.TextField(max_length=300, null=True, blank=True,
                                            verbose_name="Fundamento de la vigencia")
     ambito_vigencia = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ámbito")
     tipo_vigencia = models.CharField(max_length=150, null=True, blank=True, verbose_name="Tipo")
     nombre_vigencia = models.TextField(max_length=200, null=True, blank=True, verbose_name="Nombre")
     articulo_vigencia = models.CharField(max_length=50, null=True, blank=True, verbose_name="Artículo")
 
-    fundamento_plazo_maximo = models.CharField(max_length=150, null=True, blank=True,
+    fundamento_plazo_maximo = models.TextField(max_length=300, null=True, blank=True,
                                                verbose_name="Fundamento del plazo máximo")
     ambito_plazo_maximo = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ámbito")
     tipo_plazo_maximo = models.CharField(max_length=150, null=True, blank=True, verbose_name="Tipo")
     nombre_plazo_maximo = models.TextField(max_length=200, null=True, blank=True, verbose_name="Nombre")
     articulo_plazo_maximo = models.CharField(max_length=50, null=True, blank=True, verbose_name="Artículo")
 
-    fundamento_informacion = models.CharField(max_length=150, null=True, blank=True,
+    fundamento_informacion = models.TextField(max_length=300, null=True, blank=True,
                                               verbose_name="Fundamento del requerimiento de conservar información")
     ambito_informacion = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ámbito")
     tipo_informacion = models.CharField(max_length=150, null=True, blank=True, verbose_name="Tipo")
     nombre_informacion = models.TextField(max_length=200, null=True, blank=True, verbose_name="Nombre")
     articulo_informacion = models.CharField(max_length=50, null=True, blank=True, verbose_name="Artículo")
 
-    fundamento_inspeccion = models.CharField(max_length=150, null=True, blank=True,
+    fundamento_inspeccion = models.TextField(max_length=300, null=True, blank=True,
                                              verbose_name="Fundamento de la inspección, verificación o visita domiciliaria")
     ambito_inspeccion = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ámbito")
     tipo_inspeccion = models.CharField(max_length=150, null=True, blank=True, verbose_name="Tipo")
     nombre_inspeccion = models.TextField(max_length=200, null=True, blank=True, verbose_name="Nombre")
     articulo_inspeccion = models.CharField(max_length=50, null=True, blank=True, verbose_name="Artículo")
 
-    fundamento_tramite_servicio = models.CharField(max_length=150, null=True, blank=True,
+    fundamento_tramite_servicio = models.TextField(max_length=300, null=True, blank=True,
                                                    verbose_name="Fundamento que da origen al trámite o servicio")
     ambito_tramite_servicio = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ámbito")
     tipo_tramite_servicio = models.CharField(max_length=150, null=True, blank=True, verbose_name="Tipo")
     nombre_tramite_servicio = models.TextField(max_length=200, null=True, blank=True, verbose_name="Nombre")
     articulo_tramite_servicio = models.CharField(max_length=50, null=True, blank=True, verbose_name="Artículo")
 
-    fundamento_criterio = models.CharField(max_length=150, null=True, blank=True,
+    fundamento_criterio = models.TextField(max_length=300, null=True, blank=True,
                                            verbose_name="Fundamento del criterio de resolución")
     ambito_criterio = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ámbito")
     tipo_criterio = models.CharField(max_length=150, null=True, blank=True, verbose_name="Tipo")
     nombre_criterio = models.TextField(max_length=200, null=True, blank=True, verbose_name="Nombre")
     articulo_criterio = models.CharField(max_length=50, null=True, blank=True, verbose_name="Artículo")
 
-    fundamento_derechos = models.CharField(max_length=150, null=True, blank=True,
+    fundamento_derechos = models.TextField(max_length=300, null=True, blank=True,
                                            verbose_name="Fundamento del monto de los derechos")
     ambito_derechos = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ámbito")
     tipo_derechos = models.CharField(max_length=150, null=True, blank=True, verbose_name="Tipo")
     nombre_derechos = models.TextField(max_length=200, null=True, blank=True, verbose_name="Nombre")
     articulo_derechos = models.CharField(max_length=50, null=True, blank=True, verbose_name="Artículo")
 
-    fundamento_canal = models.CharField(max_length=150, null=True, blank=True,
+    fundamento_canal = models.TextField(max_length=300, null=True, blank=True,
                                         verbose_name="Fundamento del canal de atención")
     ambito_canal = models.CharField(max_length=100, null=True, blank=True, verbose_name="Ámbito")
     tipo_canal = models.CharField(max_length=150, null=True, blank=True, verbose_name="Tipo")
     nombre_canal = models.TextField(max_length=200, null=True, blank=True, verbose_name="Nombre")
     articulo_canal = models.CharField(max_length=50, null=True, blank=True, verbose_name="Artículo")
-    registro_regulaciones_canal = models.CharField(max_length=100, verbose_name="Registro de regulaciones")
+    registro_regulaciones_canal = models.CharField(max_length=100,blank=True, null=True, verbose_name="Registro de regulaciones")
 
     conservar_informacion = models.TextField(null=True, blank=True, max_length=500)
     tramite_informacion = models.TextField(max_length=300, null=True, blank=True,

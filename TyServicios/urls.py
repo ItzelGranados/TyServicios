@@ -17,11 +17,11 @@ from django.contrib import admin
 
 from django.urls import path
 from django.views.generic import TemplateView
-from django.views.generic import DetailView
-
-from posts.views import HomeView
+from posts import views
+from posts.views import DatoGeneralListViews, DatoGeneralDetalView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', TemplateView.as_view(template_name="index.html")),
+    path('index', views.DatoGeneralListViews.as_view()),
+    path('index/<int:pk>', DatoGeneralDetalView.as_view()),
 ]

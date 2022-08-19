@@ -1,18 +1,19 @@
-from django.utils import timezone
-from django.views.generic import DetailView
 from django.views.generic import TemplateView
+from django.views.generic import ListView, DetailView
 from posts.models import DatoGeneral, Ambito, FormaPago, Modalidad, NivelDeGobierno, OrdenamientoJuridico, OriginalCopia, Paso, Tipo, \
     TipoTramite, TipoResolucion, TipoSolicitante, Requisito
 
 
-class HomeView(TemplateView):
-    template_name = "index.html"
+class DatoGeneralListViews(ListView):
+    model = Ambito
+    context_object_name = "notes"
+    template_name = "notes/index.html"
 
-    #model = Ambito
+class DatoGeneralDetalView(DetailView):
+    models = Ambito
+    context_object_name = "note"
 
-    """def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['now'] = timezone.now()"""
+
 
     """dato = DatoGeneral.objects.all()
     forma = FormaPago.objects.all()
