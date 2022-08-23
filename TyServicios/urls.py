@@ -22,6 +22,6 @@ from posts.views import DatoGeneralListViews, DatoGeneralDetalView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index', views.DatoGeneralListViews.as_view()),
-    path('index/<int:pk>', DatoGeneralDetalView.as_view()),
+    path('tramites', views.DatoGeneralListViews.as_view()),
+    path('tramites/<int:pk>', DatoGeneralDetalView.as_view()),
 ]

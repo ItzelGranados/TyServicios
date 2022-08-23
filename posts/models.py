@@ -102,7 +102,7 @@ class DatoGeneral(models.Model):
     unidad_administrativa = models.TextField(max_length=300, verbose_name="Unidad Administrativa")
     nivel_gobierno = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, verbose_name="Nivel de gobierno")
     descripcion = models.TextField(max_length=500, verbose_name="Descripción")
-    modalidad = models.CharField(max_length=100, blank=True, null=True, verbose_name="Modalidad")
+    modalidades = models.ManyToManyField(Modalidad, verbose_name="Modalidad")
 
     requisito = models.CharField(max_length=200, blank=True, null=True, verbose_name="Requisitos")
     nombre_requisito = models.ForeignKey(Requisito, on_delete=models.PROTECT, blank=True, null=True)
@@ -126,7 +126,6 @@ class DatoGeneral(models.Model):
     numero_identificador = models.CharField(max_length=100, blank=True, null=True, verbose_name ="Número de identificador del formato")
 
     pasos = models.ForeignKey(Paso, on_delete=models.PROTECT, null=True, blank=True, verbose_name="Pasos")
-    modalidades = models.CharField(max_length=100, verbose_name="Modalidades")
 
     puede_agendar_cita = models.BooleanField(default=False, verbose_name="¿Es obligatorio agendar una cita?")
     puede_realizar_tramite = models.BooleanField(default=False,

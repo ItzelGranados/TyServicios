@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">s
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>Trámites y Servicios</title>
+
+    <style>
+    .title {
+        text-align: center;
+    }
+    </style>
+</head>
+
+
+<body>
+
+<h1 class="title">Ficha para revisión</h1>
+<h2 class="title">Registro municipal de trámites y servicios</h2>
+<h3>Secretaría</h3>
+<h3>Dirección</h3>
+
+<h3 class="title"> Sección 1 Datos Generales </h3>
+<h3 class="title"> {{ DatoGeneral.nombre_tramite }} </h3>
+
+
+{{ object_list }}
+
+<table>
+
+    {% for item in object_list %}
+
+    <p></p>
+        <tr>
+        <td><a href="/tramites/{{ item.pk }}">{{ item.homoclave }} : {{ item.nombre }}</a></td>
+        <td>{{ item.homoclave }}</td>
+        <td>{{ item.tipo }}</td>
+        </tr>
+    {% endfor %}
+
+</table>
+</body>
+</html>

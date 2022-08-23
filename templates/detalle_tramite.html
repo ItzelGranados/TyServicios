@@ -22,7 +22,12 @@
 <h3>Dirección</h3>
 
 <h3 class="title"> Sección 1 Datos Generales </h3>
-<h3 class="title"> {{ DatoGeneral.nombre_tramite }} </h3>
+<h3 class="title"> qqq{{ object.homoclave }} </h3>
+<h3 class="title"> qqq{{ object.modalidades }} </h3>
+
+{% for modalidad in object.modalidades.all %}
+    <p>{{ modalidad }}</p>
+{% endfor %}
 
 <table>
     <tr>
