@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Ambito(models.Model):
     nombre = models.CharField(max_length=10)
 
@@ -189,7 +188,7 @@ class DatoGeneral(models.Model):
     cargo = models.CharField(max_length=200, null=True, blank=True, verbose_name="Cargo")
     correo_electronico = models.EmailField(max_length=100, null=True, blank=True, verbose_name="Correo electrónico")
     otro = models.CharField(max_length=30, null=True, blank=True, verbose_name="Otro")
-    telefono = models.IntegerField(null=True, blank=True, verbose_name="Teléfono")
+    telefono = models.CharField(max_length=15, null=True, blank=True, verbose_name="Teléfono")
     extension = models.IntegerField(null=True, blank=True, verbose_name="Extensión")
     datos_responsable = models.CharField(null=True, blank=True, max_length=200,
                                          verbose_name="Datos de la oficina del responsable del trámite")

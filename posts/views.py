@@ -1,14 +1,14 @@
 from django.views.generic import TemplateView
 from django.views.generic import ListView, DetailView
-from posts.models import DatoGeneral, Ambito, FormaPago, Modalidad, NivelDeGobierno, OrdenamientoJuridico, OriginalCopia, Paso, Tipo, \
-    TipoTramite, TipoResolucion, TipoSolicitante, Requisito
+from posts.models import DatoGeneral
 
 
 class DatoGeneralListViews(ListView):
     model = DatoGeneral
     template_name = "lista_tramites.html"
 
-class DatoGeneralDetalView(DetailView):
+
+class DatoGeneralDetailView(DetailView):
     models = DatoGeneral
     queryset = DatoGeneral.objects.all()
 
@@ -20,10 +20,3 @@ class DatoGeneralDetalView(DetailView):
         return context
 
     template_name = "detalle_tramite.html"
-
-
-
-
-
-
-# Create your views here.

@@ -1,4 +1,4 @@
-"""TyServicios URL Configuration
+"""TramitesyServicios URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.1/topics/http/urls/
@@ -18,10 +18,10 @@ from django.contrib import admin
 from django.urls import path
 from django.views.generic import TemplateView
 from posts import views
-from posts.views import DatoGeneralListViews, DatoGeneralDetalView
+from posts.views import DatoGeneralListViews, DatoGeneralDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index', views.DatoGeneralListViews.as_view()),
-    path('index/<int:pk>', DatoGeneralDetalView.as_view()),
+    path('tramites', views.DatoGeneralListViews.as_view()),
+    path('tramites/<int:pk>', DatoGeneralDetailView.as_view()),
 ]
