@@ -23,18 +23,6 @@ class DatoGeneralDetalView(DetailView):
 
 
 
-    """dato = DatoGeneral.objects.all()
-    forma = FormaPago.objects.all()
-    modalidad = Modalidad.objects.all()
-    nivel_gobierno = NivelDeGobierno.objects.all()
-    ordenamiento = OrdenamientoJuridico.objects.all()
-    original_copia = OriginalCopia.objects.all()
-    pasos = Paso.objects.all()
-    tipo = Tipo.all()
-    requisito = Requisito.all()
-    tipo_tramite = TipoTramite.all()
-    tipo_resolucion = TipoResolucion.all()
-    tipo_solicitante = TipoSolicitante.all()"""
 
 
 
