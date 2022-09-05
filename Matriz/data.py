@@ -7,7 +7,7 @@ from django.core.management import BaseCommand
 from posts.models import DatoGeneral, Ambito, FormaPago, Modalidad, NivelDeGobierno, OrdenamientoJuridico, OriginalCopia, Paso, Tipo, \
     TipoTramite, TipoResolucion, TipoSolicitante, Requisito
 
-from pytz import UTC
+
 
 DATETIME_FORMAT = '%m/%d/%Y %H:%M'
 
