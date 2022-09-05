@@ -93,7 +93,16 @@ class EtapaPago(models.Model):
 
 
 class Requisito(models.Model):
-    nombre = models.CharField(max_length=160, verbose_name="Nombre del requisito")
+    nombre_requisito = models.CharField(max_length=160, verbose_name="Nombre del requisito")
+    federal_estatal = models.ForeignKey(NivelDeGobierno, null=True, blank=True, related_name="Fed- Estatal- Municipal")
+    ley_reglamento = models.ForeignKey(OrdenamientoJuridico, null=True, blank=True, related_name="Ley reglamento")
+    nombre = models.CharField(max_length=255, null=True, blank=True, verbose_name="Nombre")
+    articulo = models.CharField(max_length=100, null=True, blank=True, verbose_name="Artículo")
+    fraccion = models.CharField(max_length=100, null=True, blank=True, verbose_name="Fracción y/o Inciso")
+
+
+
+
     original_copia = models.ForeignKey(OriginalCopia, on_delete=models.PROTECT, null=True, blank=True,
                                        verbose_name="Original o copia")
     descripcion = models.CharField(max_length=200, null=True, blank=True, verbose_name="Descripción")
@@ -110,11 +119,6 @@ class Requisito(models.Model):
                                             verbose_name="¿El requisito solicitado es un trámite que se debe realizar con alguna dependencia gubernamental?")
     nombre_dependencia = models.CharField(max_length=100, null=True, blank=True,
                                           verbose_name="Nombre de la dependencia, ubicación y medios de contacto")
-    ambito_requisito = models.ForeignKey(NivelDeGobierno,on_delete=models.PROTECT, blank=True, null=True,related_name="Ámbito")
-    tipo_requisito = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, blank=True, null=True, related_name="Tipo")
-    nombre_fundamento_requisito = models.CharField(max_length=250, blank=True, null=True, verbose_name="Nombre")
-    articulo_fundamento_requisito = models.CharField(max_length=50, blank=True, null=True, verbose_name="Artículo")
-    fraccion_fundamento_requisito = models.CharField(max_length=50, blank=True, null=True, verbose_name="Fracción")
 
     def __str__(self):
         return self.nombre
@@ -132,7 +136,8 @@ class DatoGeneral(models.Model):
     nivel_gobierno = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, verbose_name="Nivel de gobierno")
     descripcion = models.TextField(max_length=500, verbose_name="Descripción")
 
-    ambito_fundamento_origen = models.ForeignKey(Ambito, on_delete=models.PROTECT, blank=True, null=True, related_name="+")
+    fundamento_tramite_servicio = models.CharField(max_length=255, blank=True, null=True, verbose_name="Fundamento que da origen al trámite o servicio")
+    ambito_fundamento_origen = models.ForeignKey(Ambito, on_delete=models.PROTECT, blank=True, null=True, related_name="Ámbito")
     tipo_fundamento_origen = models.ForeignKey(OrdenamientoJuridico, on_delete=models.PROTECT,blank=True, null=True, verbose_name="Tipo")
     nombre_fundamento_origen = models.CharField(max_length=250, blank=True, null=True, verbose_name="Nombre")
     articulo_fundamento_origen = models.CharField(max_length=250, blank=True, null=True, verbose_name="Artículo")
@@ -140,6 +145,14 @@ class DatoGeneral(models.Model):
 
     numero_requisitos = models.IntegerField(blank=True, null=True, verbose_name="Requisitos")
     requisitos = models.ManyToManyField(Requisito, verbose_name="Nombre del requisito")
+
+    ambito_requisito = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, blank=True, null=True,
+                                         related_name="Ámbito")
+    tipo_requisito = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, blank=True, null=True,
+                                       related_name="Tipo")
+    nombre_fundamento_requisito = models.CharField(max_length=250, blank=True, null=True, verbose_name="Nombre")
+    articulo_fundamento_requisito = models.CharField(max_length=50, blank=True, null=True, verbose_name="Artículo")
+    fraccion_fundamento_requisito = models.CharField(max_length=50, blank=True, null=True, verbose_name="Fracción")
 
     nombre_formato = models.CharField(max_length=250, blank=True, null=True, verbose_name="Nombre del formato")
     numero_identificador = models.CharField(max_length=100, blank=True, null=True, verbose_name ="Número de identificador del formato")
