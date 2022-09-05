@@ -91,17 +91,51 @@ class EtapaPago(models.Model):
     def __str__(self):
         return self.nombre
 
+class CriterioResolucion(models.Model):
+
+    nombre_criterio = models.CharField(max_length=250, null=True, blank=True, verbose_name="Nombre criterio")
+    nivel = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, null=True, blank=True, related_name="+")
+    ley_reglamento = models.ForeignKey(OrdenamientoJuridico, on_delete=models.PROTECT, null=True, blank=True, related_name="+")
+    nombre = models.CharField(max_length=250, null=True, blank=True, verbose_name="Nombre")
+    articulo = models.CharField(max_length=250, null=True, blank=True, verbose_name="Artículo")
+    fraccion = models.CharField(max_length=250, null=True, blank=True, verbose_name="Fracción y/o servicio")
+    def __str__(self):
+        return self.nombre
+
 
 class Requisito(models.Model):
-    nombre_requisito = models.CharField(max_length=160, verbose_name="Nombre del requisito")
-    federal_estatal = models.ForeignKey(NivelDeGobierno, null=True, blank=True, related_name="Fed- Estatal- Municipal")
-    ley_reglamento = models.ForeignKey(OrdenamientoJuridico, null=True, blank=True, related_name="Ley reglamento")
+    nombre_requisito = models.TextField(max_length=500, null=True, blank=True, verbose_name="Nombre del requisito")
+    federal_estatal = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, null=True, blank=True, related_name="+")
+    ley_reglamento = models.ForeignKey(OrdenamientoJuridico, on_delete=models.PROTECT, null=True, blank=True, related_name="+")
     nombre = models.CharField(max_length=255, null=True, blank=True, verbose_name="Nombre")
     articulo = models.CharField(max_length=100, null=True, blank=True, verbose_name="Artículo")
     fraccion = models.CharField(max_length=100, null=True, blank=True, verbose_name="Fracción y/o Inciso")
 
 
+    def __str__(self):
+        return self.nombre
 
+
+class DatoGeneral(models.Model):
+
+    homoclave_anterior = models.CharField(max_length=40, blank=True, null=True, verbose_name="Homoclave anterior")
+    homoclave = models.CharField(max_length=40, blank=True, null=True, verbose_name="Homoclave")
+    nombre_tramite = models.CharField(max_length=150, null=True, blank=True, verbose_name="Nombre del trámite")
+    tipo = models.ForeignKey(Tipo, blank=True, on_delete=models.PROTECT)
+    tipo_tramite = models.ForeignKey(TipoTramite, blank=True, on_delete=models.PROTECT, verbose_name="Tipo de trámite")
+    depedencia = models.CharField(max_length=200, null=True, verbose_name="Depedencia")
+    unidad_administrativa = models.CharField(max_length=250, null=True, blank=True, verbose_name="Unidad Administrativa")
+    nivel_gobierno = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, verbose_name="Nivel de gobierno")
+    descripcion_principal = models.TextField(max_length=500, blank=True, null=True, verbose_name="Descripción")
+
+    ambito_fundamento_origen = models.ForeignKey(Ambito, on_delete=models.PROTECT, blank=True, null=True, related_name="Ámbito")
+    tipo_fundamento_origen = models.ForeignKey(OrdenamientoJuridico, on_delete=models.PROTECT,blank=True, null=True, verbose_name="Tipo")
+    nombre_fundamento_origen = models.CharField(max_length=250, blank=True, null=True, verbose_name="Nombre")
+    articulo_fundamento_origen = models.CharField(max_length=250, blank=True, null=True, verbose_name="Artículo")
+    fraccion_fundamento_origen = models.CharField(max_length=250,blank=True, null=True, verbose_name="Fracción")
+
+    numero_requisitos = models.IntegerField(blank=True, null=True, verbose_name="Requisitos")
+    requisitos = models.ManyToManyField(Requisito, blank=True, verbose_name="Nombre del requisito")
 
     original_copia = models.ForeignKey(OriginalCopia, on_delete=models.PROTECT, null=True, blank=True,
                                        verbose_name="Original o copia")
@@ -112,57 +146,31 @@ class Requisito(models.Model):
     tiempo_promedio = models.IntegerField(null=True, blank=True,
                                           verbose_name="Tiempo promedio en conseguir el requisito para su presentación (horas)")
     firma_validacion = models.BooleanField(default=False, null=True, blank=True,
-                                        verbose_name="¿Es necesario alguna firma, validación, certificación, autorización o visto bueno de un tercero?")
+                                           verbose_name="¿Es necesario alguna firma, validación, certificación, autorización o visto bueno de un tercero?")
     persona_emite = models.CharField(max_length=200, null=True, blank=True,
                                      verbose_name="Nombre de la empresa o persona que lo emite")
     requisito_solicitado = models.BooleanField(default=False, null=True, blank=True,
-                                            verbose_name="¿El requisito solicitado es un trámite que se debe realizar con alguna dependencia gubernamental?")
+                                               verbose_name="¿El requisito solicitado es un trámite que se debe realizar con alguna dependencia gubernamental?")
     nombre_dependencia = models.CharField(max_length=100, null=True, blank=True,
                                           verbose_name="Nombre de la dependencia, ubicación y medios de contacto")
 
-    def __str__(self):
-        return self.nombre
-
-
-class DatoGeneral(models.Model):
-
-    homoclave_anterior = models.CharField(max_length=40, blank=True, null=True, verbose_name="Homoclave anterior")
-    homoclave = models.CharField(max_length=40, blank=True, null=True, verbose_name="Homoclave")
-    nombre_tramite = models.CharField(max_length=150, verbose_name="Nombre del trámite")
-    tipo = models.ForeignKey(Tipo, on_delete=models.PROTECT)
-    tipo_tramite = models.ForeignKey(TipoTramite, on_delete=models.PROTECT, verbose_name="Tipo de trámite")
-    depedencia = models.CharField(max_length=200, verbose_name="Depedencia")
-    unidad_administrativa = models.CharField(max_length=250, verbose_name="Unidad Administrativa")
-    nivel_gobierno = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, verbose_name="Nivel de gobierno")
-    descripcion = models.TextField(max_length=500, verbose_name="Descripción")
-
-    fundamento_tramite_servicio = models.CharField(max_length=255, blank=True, null=True, verbose_name="Fundamento que da origen al trámite o servicio")
-    ambito_fundamento_origen = models.ForeignKey(Ambito, on_delete=models.PROTECT, blank=True, null=True, related_name="Ámbito")
-    tipo_fundamento_origen = models.ForeignKey(OrdenamientoJuridico, on_delete=models.PROTECT,blank=True, null=True, verbose_name="Tipo")
-    nombre_fundamento_origen = models.CharField(max_length=250, blank=True, null=True, verbose_name="Nombre")
-    articulo_fundamento_origen = models.CharField(max_length=250, blank=True, null=True, verbose_name="Artículo")
-    fraccion_fundamento_origen = models.CharField(max_length=250,blank=True, null=True, verbose_name="Fracción")
-
-    numero_requisitos = models.IntegerField(blank=True, null=True, verbose_name="Requisitos")
-    requisitos = models.ManyToManyField(Requisito, verbose_name="Nombre del requisito")
-
     ambito_requisito = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, blank=True, null=True,
                                          related_name="Ámbito")
-    tipo_requisito = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, blank=True, null=True,
-                                       related_name="Tipo")
+    tipo_requisito = models.ForeignKey(OrdenamientoJuridico, on_delete=models.PROTECT, blank=True, null=True,
+                                       related_name="+")
     nombre_fundamento_requisito = models.CharField(max_length=250, blank=True, null=True, verbose_name="Nombre")
     articulo_fundamento_requisito = models.CharField(max_length=50, blank=True, null=True, verbose_name="Artículo")
     fraccion_fundamento_requisito = models.CharField(max_length=50, blank=True, null=True, verbose_name="Fracción")
 
     nombre_formato = models.CharField(max_length=250, blank=True, null=True, verbose_name="Nombre del formato")
     numero_identificador = models.CharField(max_length=100, blank=True, null=True, verbose_name ="Número de identificador del formato")
-    modalidades = models.ManyToManyField(Modalidad, related_name="Modalidad")
+    modalidades = models.ManyToManyField(Modalidad, blank=True, related_name="Modalidad")
 
     ambito_fundamento_medio = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, blank=True, null=True, related_name="+")
-    tipo_fundamento_medio = models.ForeignKey(NivelDeGobierno,on_delete=models.PROTECT, blank=True, null=True, related_name="+")
+    tipo_fundamento_medio = models.ForeignKey(OrdenamientoJuridico,on_delete=models.PROTECT, blank=True, null=True, related_name="+")
     nombre_fundamento_medio = models.CharField(max_length=250, blank=True, null=True, verbose_name="Nombre")
     articulo_fundamento_medio = models.CharField(max_length=50, blank=True, null=True, verbose_name="Artículo")
-    fraccion_fundamento_medio = models.IntegerField(blank=True, null=True, verbose_name="Fracción y/o inciso")
+    fraccion_fundamento_medio = models.CharField(max_length=20,blank=True, null=True, verbose_name="Fracción y/o inciso")
 
     pasos = models.ForeignKey(Paso, on_delete=models.PROTECT, null=True, blank=True, verbose_name="Pasos")
 
@@ -172,13 +180,13 @@ class DatoGeneral(models.Model):
     medio_cita = models.URLField(max_length=250, blank=True, null=True, verbose_name="Medio para solicitar la cita")
 
     monto = models.CharField(max_length=100, null=True, blank=True, verbose_name="Monto")
-    moneda_pago = models.CharField(max_length=20, verbose_name="Moneda en la que se realiza el pago")
-    metodologia_monto = models.TextField(verbose_name="Metodología utilizada para cálculo del monto")
-    realizar_pago = models.ManyToManyField(UbicacionPago,
+    moneda_pago = models.CharField(max_length=20,null=True, blank=True, verbose_name="Moneda en la que se realiza el pago")
+    metodologia_monto = models.TextField(null=True, blank=True, verbose_name="Metodología utilizada para cálculo del monto")
+    realizar_pago = models.ManyToManyField(UbicacionPago,blank=True,
                                      verbose_name="¿En dónde puedo realizar el pago?")
-    forma_pago = models.ManyToManyField(FormaPago,
+    forma_pago = models.ManyToManyField(FormaPago,blank=True,
                                   verbose_name="Forma de pago")
-    etapa_tramite = models.ManyToManyField(EtapaPago,
+    etapa_tramite = models.ManyToManyField(EtapaPago,blank=True,
                                      verbose_name="Etapa del trámite o servicio en que se realiza o se puede realizar el pago")
 
     vigencia_pago = models.CharField(max_length=100, null=True, blank=True,
@@ -186,7 +194,7 @@ class DatoGeneral(models.Model):
 
     fundamento_monto_derechos = models.TextField(blank=True, null=True, verbose_name="Fundamento del monto de derechos")
     ambito_fundamento_derechos = models.ForeignKey(Ambito, on_delete=models.PROTECT, blank=True, null=True, related_name="+")
-    tipo_fundamento_derechos = models.CharField(max_length=250, blank=True, null=True, verbose_name="Tipo")
+    tipo_fundamento_derechos = models.ForeignKey(OrdenamientoJuridico, on_delete=models.PROTECT, blank=True, null=True, related_name="+")
     nombre_fundamento_derecho = models.CharField(max_length=250, blank=True, null=True, verbose_name="Nombre")
     articulo_fundamento_derechos = models.CharField(max_length=20, blank=True, null = True, verbose_name="Artículo")
     fraccion_fundamento_derechos = models.CharField(max_length=10, blank=True, null=True, verbose_name="Fracción")
@@ -221,12 +229,10 @@ class DatoGeneral(models.Model):
     fraccion_fundamento_prevencion = models.CharField(max_length=100, blank=True, null=True, verbose_name="Fracción")
 
     tipo_resolucion = models.ForeignKey(TipoResolucion, on_delete=models.PROTECT, null=True, blank=True, related_name="+")
-    fundamento_resolucion = models.CharField(max_length=250, blank=True, null=True, verbose_name="Fundamento del criterio de resolución")
-    ambito_fundamento_resolucion = models.CharField(max_length=100, blank=True, null=True, verbose_name="Ámbito")
-    tipo_fundamento_resolucion = models.CharField(max_length=100, blank=True, null=True, verbose_name="Tipo")
-    nombre_fundamento_resolucion =models.CharField(max_length=100, blank=True, null=True, verbose_name="Nombre")
-    articulo_fundamento_resolucion = models.CharField(max_length=100, blank=True, null=True, verbose_name="Artículo")
-    fraccion_fundamento_resolucion = models.CharField(max_length=100, blank=True, null=True, verbose_name="Fracción")
+    fundamento_resolucion = models.ManyToManyField(CriterioResolucion, blank=True,
+                                             verbose_name="Fundamento del criterio de resolución")
+
+
     vigencia = models.CharField(max_length=100, blank=True, null=True, verbose_name="Vigencia")
 
     ambito_fundamento_vigencia = models.CharField(max_length=100, blank=True, null=True, verbose_name="Ámbito")
@@ -268,7 +274,7 @@ class DatoGeneral(models.Model):
     extension = models.IntegerField(null=True, blank=True, verbose_name="Extensión")
     datos_responsable = models.CharField(null=True, blank=True, max_length=200,
                                          verbose_name="Datos de la oficina del responsable del trámite")
-    organo = models.CharField(max_length=100, null=True, blank=True, verbose_name="Órgano interno de control")
+    organo = models.CharField(max_length=255, null=True, blank=True, verbose_name="Órgano interno de control")
 
     quejas_denuncias = models.TextField(max_length=400, null=True, blank=True,
                                         verbose_name="Datos de contacto para quejas y denuncias")
