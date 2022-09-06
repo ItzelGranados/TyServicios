@@ -16,7 +16,9 @@ with open('Matriz/csv/CriterioResolucion.csv', 'r') as file:
                                         articulo=row[6], fraccion=row[7])
         try:
             resolucion.save()
+            print("Save", i)
         except:
+            #resolucion.save()
             print("Listo", i)
             i = i+1
 '''
