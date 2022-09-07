@@ -98,7 +98,7 @@ class CriterioResolucion(models.Model):
     ley_reglamento = models.ForeignKey(OrdenamientoJuridico, on_delete=models.PROTECT, null=True, blank=True, related_name="+")
     nombre = models.CharField(max_length=250, null=True, blank=True, verbose_name="Nombre")
     articulo = models.CharField(max_length=250, null=True, blank=True, verbose_name="Artículo")
-    fraccion = models.CharField(max_length=250, null=True, blank=True, verbose_name="Fracción y/o servicio")
+    fraccion = models.CharField(max_length=250, null=True, blank=True, verbose_name="Fracción y/o inciso")
     def __str__(self):
         return self.nombre
 

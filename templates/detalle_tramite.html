@@ -1,18 +1,14 @@
+{% load static %}
 <!DOCTYPE html>
-<html lang="es">s
+<html lang="es">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Trámites y Servicios</title>
-
-    <style>
-    .title {
-        text-align: center;
-    }
-    </style>
+    <link rel="stylesheet", href="static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
-
 
 <body>
 
@@ -20,39 +16,56 @@
 <h2 class="title">Registro municipal de trámites y servicios</h2>
 <h3>Secretaría</h3>
 <h3>Dirección</h3>
+<h3>Sección 1 Datos Generales </h3>
+
+{{ object }}
+
+{% for dato in object %}
+    <p>{{ dato }}</p>
+
 
 <h3 class="title"> Sección 1 Datos Generales </h3>
-<h3 class="title"> qqq{{ object.homoclave }} </h3>
-<h3 class="title"> qqq{{ object.modalidades }} </h3>
+    <h4>Nombre del trámite</h4>
+<h4 class="title"> {{ dato.nombre_tramite }} </h4>
 
-{% for modalidad in object.modalidades.all %}
-    <p>{{ modalidad }}</p>
-{% endfor %}
 
 <table>
     <tr>
+        <th> Nombre del trámite </th>
         <th>Homoclave</th>
-        <th> Tipo</th>
+        <th> Tipo </th>
         <th> Tipo de trámite</th>
         <th> Dependencia</th>
         <th> Unidad Administrativa</th>
         <th> Nivel de gobierno </th>
         <th> Descripción </th>
-        <th> Modalidad </th>
     </tr>
 
     <tr>
-        <td>{{ DatoGeneral.homoclave }}</td>
-        <td>{{ DatoGeneral.tipo}}</td>
-        <td>{{ DatoGeneral.tipo_tramite}}</td>
-        <td>{{ DatoGeneral.unidad_administrativa}}</td>
-        <td>{{ DatoGeneral.nivel_gobierno}}</td>
-        <td>{{ DatoGeneral.descripcion}}</td>
-        <td>{{ DatoGeneral.modalidad}}</td>
+        <td>{{ dato.homoclave }}</td>
+        <td>{{ dato.tipo}}</td>
+        <td>{{ dato.tipo_tramite}}</td>
+        <td>{{ dato.unidad_administrativa}}</td>
+        <td>{{ dato.nivel_gobierno}}</td>
+        <td>{{ dato.descripcion}}</td>
+        <td>{{ dato.modalidad}}</td>
+    </tr>
+
+    <tr>
+        <thead>Fundamento Jurídico</thead>
+        <th> Ámbito </th>
+        <th> Tipo </th>
+        <th> Nombre del ordenamiento </th>
+        <th> Artículo </th>
+        <th> Fracción o inciso </th>
+    </tr>
+
+    <tr>
+        <td>{{dato}}</td>
     </tr>
 
 </table>
-
+{% endfor %}
     <h3 class="title"> Sección 2 Requisito </h3>
 
 
@@ -268,5 +281,7 @@
     </tr>
     </table>
 
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
 </html>
