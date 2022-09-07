@@ -1,10 +1,5 @@
 from posts.models import CriterioResolucion
 import csv
-import os
-import django
-
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "TyServicios.settings")
-django.setup()
 
 with open('Matriz/csv/CriterioResolucion.csv', 'r') as file:
     CriterioResolucion.objects.all().delete()
