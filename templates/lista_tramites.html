@@ -7,37 +7,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Trámites y Servicios</title>
-    <link rel="stylesheet", href="static/style.css">
+    <link rel="stylesheet", href="{% static 'style.css' %}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
 </head>
 
 
 <body>
+<div class="centro">
 
 <h1 class="title">Ficha para revisión</h1>
 <h2 class="title">Registro municipal de trámites y servicios</h2>
-<h3>Secretaría</h3>
-<h3>Dirección</h3>
 
-<h3 class="title"> Sección 1 Datos Generales </h3>
-
-<h3 class="title"> Nombre del trámite </h3>
-
-{{ object_list }}
 <table class="table table-bordered">
     {% for item in object_list %}
-
-    <p></p>
         <tr>
-        <td><a href="/tramites/{{ item.pk}}">{{ item.homoclave }} : {{ item.nombre }}</a></td>
+        <td><a href="/tramites/{{item.pk}}">{{ item.homoclave }} : {{ item.nombre_tramite }}</a></td>
         <td>{{ item.homoclave }}</td>
-        <td>{{ item.tipo }}</td>
+        <td>{{ item.homoclave_anterior }}</td>
         </tr>
     {% endfor %}
 
 </table>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+<div class="centro">
+
 </body>
 </html>

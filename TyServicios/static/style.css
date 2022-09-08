@@ -1,10 +1,28 @@
+html{
+    margin: auto;
+}
 
-
-h1, h2, h3{
+h1, h2{
     text-align: center;
+}
+
+th{
+    background: #bbccdd !important;
 }
 
 .title{
     text-align: center;
-   background: darkgray;
+    background: darkgray;
+}
+
+a{
+    color: black !important;
+}
+
+.centro{
+    margin: 4rem;
+}
+
+li{
+    font-size: x-large;
 }
