@@ -1,4 +1,4 @@
-from posts.models import Requisito
+from posts.models import Requisito, NivelDeGobierno
 import csv
 
 with open('Matriz/csv/Requisitos.csv', 'r') as file:
@@ -7,7 +7,11 @@ with open('Matriz/csv/Requisitos.csv', 'r') as file:
     headers = next(reader)
     i = 2
     for row in reader:
-        resolucion = Requisito(nombre_requisito=row[1], nombre=row[4], articulo=row[5], fraccion=row[6])
+        fed_est = NivelDeGobierno.objects.get(nombre=row[2])
+        ley_reg = NivelDeGobierno.objects.get(nombre=row[3])
+        resolucion = Requisito(nombre_requisito=row[1], federal_estatal=fed_est, ley_reglamento=ley_reg, nombre=row[4],
+                               articulo=row[5], fraccion=row[6])
+
         resolucion.save()
         print("Listo", i)
         i = i + 1
