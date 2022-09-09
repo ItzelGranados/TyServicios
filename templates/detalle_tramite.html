@@ -11,90 +11,137 @@
 </head>
 
 <body>
-<div class="centro">
-<h1 class="title">Ficha para revisión</h1>
-<h2 class="title">Registro municipal de trámites y servicios</h2>
+    <!---------------------------------------------------Encabezado-------------------------------------------------->
+    <div class="centro">
+    <h1 class="title">Ficha para revisión</h1>
+    <h2 class="title">Registro municipal de trámites y servicios</h2>
 
-<table class="table table-bordered">
+    <table class="table table-bordered">
+        <tr>
+            <th>Secretaría</th>
+        </tr>
+
+        <tr>
+            <td>{{ object.depedencia }}</td>
+        </tr>
+    </table>
+    <table class="table table-bordered">
+        <tr>
+            <th> Dirección </th>
+        </tr>
+        <tr>
+            <td>{{ object.unidad_administrativa }}</td>
+        </tr>
+
+    </table>
+
+
+<!---------------------------------------------------SECCIÓN 1-------------------------------------------------->
+
+    <h3 class="title"> Sección 1 Datos Generales </h3>
+
+    <table class="table table-bordered">
+        <tr>
+            <th> Nombre del trámite </th>
+        </tr>
+        <tr>
+            <td>{{ object.nombre_tramite }}</td>
+        </tr>
+    </table>
+    <table class="table table-bordered">
+        <tr>
+            <th> Homoclave </th>
+            <th> Tipo </th>
+            <th> Tipo de trámite </th>
+        </tr>
+        <tr>
+            <td>{{ object.homoclave }}</td>
+            <td>{{ object.tipo}}</td>
+           <td>{{ object.tipo_tramite }}</td>
+        </tr>
+    </table>
+
+
+    <table class="table table-bordered">
+        <tr>
+            <th> Dependencia </th>
+            <th> Unidad Administrativa </th>
+            <th> Nivel de gobierno </th>
+        </tr>
+        <tr>
+            <td>{{ object.depedencia }}</td>
+            <td>{{ object.unidad_administrativa }}</td>
+            <td>{{ object.nivel_gobierno }}</td>
+        </tr>
+    </table>
+
+    <table class="table table-bordered">
+        <tr>
+            <th> Descripción</th>
+
+        </tr>
+        <tr>
+            <td>{{object.descripcion_principal}}</td>
+        </tr>
+    </table>
+
+    <h6 class="title"> Fundamento Jurídico </h6>
+
+    <table class="table table-bordered">
+        <tr>
+            <th> Ámbito </th>
+            <th> Tipo </th>
+        </tr>
+
+        <tr>
+            <td>{{ object.ambito_fundamento_origen }}</td>
+            <td>{{ object.tipo_fundamento_origen }}</td>
+        </tr>
+    </table>
+
+    <table class="table table-bordered">
+        <tr>
+            <th> Nombre del ordenamiento</th>
+        </tr>
+        <tr>
+            <td>{{object.nombre_fundamento_origen}}</td>
+        </tr>
+    </table>
+
+    <table class="table table-bordered">
     <tr>
-        <th>
-            Secretaría
-        </th>
-
-    </tr>
-
-    <tr>
-        <td>{{ object.depedencia }}</td>
-
-    </tr>
-    <tr>
-    <th> Dirección </th>
-    </tr>
-    <tr>
-    <td>{{ object.unidad_administrativa }}</td>
-</tr>
-</table>
-
-<h3 class="title"> Sección 1 Datos Generales </h3>
-
-<table class="table table-bordered">
-    <tr>
-        <th> Nombre del trámite </th>
-        <th> Homoclave </th>
-        <th> Tipo </th>
-        <th> Tipo de trámite</th>
-    </tr>
-
-    <tr>
-        <td>{{ object.nombre_tramite }}</td>
-        <td>{{ object.homoclave}}</td>
-        <td>{{ object.tipo}}</td>
-        <td>{{ object.tipo_tramite}}</td>
-
-    </tr>
-
-    <tr>
-        <th> Dependencia</th>
-        <th> Unidad Administrativa</th>
-        <th> Nivel de gobierno </th>
-        <th> Descripción </th>
-
-
-    </tr>
-
-    <tr>
-        <td>{{object.dependencia}}</td>
-        <td>{{object.unidad_administrativa}}</td>
-        <td>{{object.descripcion}}</td>
-        <td>{{object.modalidad}}</td>
-    </tr>
-
-    <tr>
-         <th> Ámbito </th>
-        <th> Tipo </th>
-        <th> Nombre del ordenamiento </th>
         <th> Artículo </th>
-    </tr>
-
-    <tr>
         <th> Fracción o inciso </th>
     </tr>
 
     <tr>
-        <td></td>
+        <td>{{ object.articulo_fundamento_origen }}</td>
+        <td>{{ object.fraccion_fundamento_origen }}</td>
     </tr>
 
 </table>
 
-    <h3 class="title"> Sección 2 Requisito </h3>
+
+<!---------------------------------------------------SECCIÓN 2-------------------------------------------------->
+    <h3 class="title"> Sección 2 Requisitos </h3>
+
+    <table class="table table-bordered">
+        <tr>
+            <th> Cantidad de requisitos </th>
+        </tr>
+
+        <tr>
+            <td>{{ object.numero_requisito }}</td>
+        </tr>
+    </table>
 
 
 <table class="table table-bordered">
     <tr>
-        <th>Nombre del requisito</th>
+        <th> Nombre del requisito</th>
         <th> Original o copia</th>
         <th> Descripción</th>
-        <th>Forma parte del formato</th>
+        <th> Forma parte del formato</th>
         <th>Naturaleza</th>
         <th> Tiempo promedio en conseguir el requisito para su presentación (días)  </th>
         <th> ¿Es necesario alguna firma, validación, certificación, autorización o visto bueno de un tercero? </th>
@@ -119,6 +166,9 @@
 </table>
 
 
+<!---------------------------------------------------SECCIÓN 3-------------------------------------------------->
+
+
 <h3 class="title"> Sección 3 Formato </h3>
 <table class="table table-bordered">
     <tr>
@@ -132,6 +182,7 @@
     </tr>
 </table>
 
+<!---------------------------------------------------SECCIÓN 4-------------------------------------------------->
 
     <h3 class="title"> Sección 4 Pasos </h3>
 
@@ -149,6 +200,7 @@
     </tr>
     </table>
 
+<!---------------------------------------------------SECCIÓN 5-------------------------------------------------->
 
  <h3 class="title"> Sección 5 Cita </h3>
 
@@ -167,6 +219,7 @@
     </tr>
     </table>
 
+<!---------------------------------------------------SECCIÓN 6-------------------------------------------------->
 
 <h3 class="title"> Sección 6 Costos</h3>
 
@@ -194,6 +247,9 @@
     </tr>
     </table>
 
+
+<!---------------------------------------------------SECCIÓN 7-------------------------------------------------->
+
 <h3 class="title"> Sección 7 Tiempos</h3>
 
 
@@ -213,6 +269,9 @@
     </tr>
     </table>
 
+
+<!---------------------------------------------------SECCIÓN 8-------------------------------------------------->
+
 <h3 class="title"> Sección 8 Vigencia</h3>
 
 
@@ -229,6 +288,7 @@
     </tr>
     </table>
 
+<!---------------------------------------------------SECCIÓN 9-------------------------------------------------->
 
 <h3 class="title"> Sección 9 Solicitante</h3>
 
@@ -267,8 +327,9 @@
     </tr>
     </table>
 
+<!---------------------------------------------------SECCIÓN 10-------------------------------------------------->
 
-<h3 class="title"> Sección</h3>
+<h3 class="title"> Sección 10</h3>
 
 <table class="table table-bordered">
     <tr>
@@ -300,9 +361,11 @@
         <td>{{object.quejas_denuncias}}</td>
     </tr>
     </table>
+   </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
 
-    </div>
+
 </body>
 </html>
