@@ -1,4 +1,4 @@
-from posts.models import CriterioResolucion
+from posts.models import CriterioResolucion, NivelDeGobierno, OrdenamientoJuridico
 import csv
 
 with open('Matriz/csv/CriterioResolucion.csv', 'r') as file:
@@ -7,8 +7,12 @@ with open('Matriz/csv/CriterioResolucion.csv', 'r') as file:
     headers = next(reader)
     i = 2
     for row in reader:
-        resolucion = CriterioResolucion(nombre_criterio=row[2], nombre=row[5],
+        # 3 y 4
+        fed_est = NivelDeGobierno.objects.get(nombre=row[3])
+        ley_reg = OrdenamientoJuridico.objects.get(nombre=row[4])
+        resolucion = CriterioResolucion(nombre_criterio=row[2], nivel=fed_est, ley_reglamento=ley_reg, nombre=row[5],
                                         articulo=row[6], fraccion=row[7])
-        resolucion.save()
         print("Listo", i)
+        resolucion.save()
+
         i = i + 1
