@@ -248,6 +248,7 @@ class DatoGeneral(models.Model):
 
     resolucion_requisito = models.BooleanField(default=False, verbose_name="¿La resolución es requisito de otro trámite?")
     liga_resolución = models.CharField(max_length=200, blank=True, null=True, verbose_name="Liga de la resolución del trámite")
+
     persona_solicitante = models.ForeignKey(TipoSolicitante,on_delete=models.PROTECT, null=True, blank=True, verbose_name="¿Quién puede solicitarlo?")
     funcionalidad_tramite = models.TextField(max_length=400, null=True, blank=True,
                                              verbose_name="¿Para qué sirve realizar este trámite?")
@@ -313,7 +314,7 @@ class DatoGeneral(models.Model):
                                    verbose_name="Información adicional")
     informacion_interesado = models.CharField(max_length=150, null=True, blank=True,
                                               verbose_name="Información que sea útil para que el interesado realice el trámite")
-    protresta_ciudadana = models.CharField(max_length=150, null=True, blank=True,
+    protesta_ciudadana = models.CharField(max_length=150, null=True, blank=True,
                                               verbose_name="Protesta Ciudadana")
     cantidad_protestas = models.IntegerField(null=True, blank=True,
                                             verbose_name="Cantidad de protestas recibidas en el año")
