@@ -4,15 +4,16 @@ html{
 
 h1, h2{
     text-align: center;
+    font-palette: light;
 }
 
 th{
-    background: #bbccdd !important;
+    background: black !important;
 }
 
 .title{
     text-align: center;
-    background: darkgray;
+    background: white !important;
 }
 
 a{

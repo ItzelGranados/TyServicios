@@ -323,3 +323,6 @@ class DatoGeneral(models.Model):
 
     def __str__(self):
         return self.homoclave
+
+    class Meta:
+        ordering = ['homoclave']

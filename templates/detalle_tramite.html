@@ -48,8 +48,12 @@
         </tr>
         <tr>
             <td>{{ object.homoclave }}</td>
-            <td>{{ object.tipo}}</td>
-           <td>{{ object.tipo_tramite }}</td>
+            {% for i in object.tipo.all %}
+               <td> {{ i }} </td>
+            {% endfor %}
+           {% for i in object.tipo_tramite.all %}
+               <td> {{ i }} </td>
+            {% endfor %}
         </tr>
     </table>
 
@@ -214,7 +218,9 @@
 
         <tr>
             <td>{{ object.ambito_fundamento_medio }}</td>
-            <td>{{ object.tipo_fundamento_medio }}</td>
+            {% for i in object.tipo_fundamento_medio.all %}
+               <td> {{ i }} </td>
+            {% endfor %}
         </tr>
     </table>
 
