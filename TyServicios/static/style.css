@@ -5,10 +5,18 @@ html{
 h1, h2{
     text-align: center;
     font-palette: light;
+    border-bottom-color: black;
+}
+
+table{
+    border-bottom-width: thick !important;
 }
 
 th{
     background: black !important;
+    text-shadow: #bbccdd;
+    border-bottom-width: thick !important;
+    color: white;
 }
 
 .title{
