@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Ambito(models.Model):
-    nombre = models.CharField(max_length=10)
+    nombre = models.CharField(max_length=25)
 
     def __str__(self):
         return self.nombre
@@ -44,7 +44,7 @@ class OriginalCopia(models.Model):
 
 
 class Paso(models.Model):
-    nombre = models.CharField(max_length=50)
+    nombre = models.CharField(max_length=100)
 
     def __str__(self):
         return self.nombre
@@ -105,6 +105,7 @@ class CriterioResolucion(models.Model):
 
 class Requisito(models.Model):
     nombre_requisito = models.TextField(max_length=500, null=True, blank=True, verbose_name="Nombre del requisito")
+    numero_requisito = models.IntegerField(null=True, blank=True, verbose_name="Numero de requisito")
     federal_estatal = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, null=True, blank=True, related_name="+")
     ley_reglamento = models.ForeignKey(OrdenamientoJuridico, on_delete=models.PROTECT, null=True, blank=True, related_name="+")
     nombre = models.CharField(max_length=255, null=True, blank=True, verbose_name="Nombre")
@@ -121,7 +122,7 @@ class DatoGeneral(models.Model):
     homoclave_anterior = models.CharField(max_length=40, blank=True, null=True, verbose_name="Homoclave anterior")
     homoclave = models.CharField(max_length=40, blank=True, null=True, verbose_name="Homoclave")
     nombre_tramite = models.CharField(max_length=150, null=True, blank=True, verbose_name="Nombre del trámite")
-    tipo = models.ForeignKey(Tipo, null=True, blank=True, on_delete=models.PROTECT)
+    tipo = models.ForeignKey(Tipo, null=True, blank=True, on_delete=models.PROTECT, verbose_name= "Tipo de Servicio o Tramite")
     tipo_tramite = models.ForeignKey(TipoTramite, null=True, blank=True, on_delete=models.PROTECT, verbose_name="Tipo de trámite")
     depedencia = models.CharField(max_length=200, null=True, verbose_name="Depedencia")
     unidad_administrativa = models.CharField(max_length=250, null=True, blank=True, verbose_name="Unidad Administrativa")
@@ -139,6 +140,7 @@ class DatoGeneral(models.Model):
 
     original_copia = models.ForeignKey(OriginalCopia, on_delete=models.PROTECT, null=True, blank=True,
                                        verbose_name="Original o copia")
+
     descripcion = models.CharField(max_length=200, null=True, blank=True, verbose_name="Descripción")
 
     formato = models.BooleanField(default=False, null=True, blank=True, verbose_name="¿Forma parte del formato?")

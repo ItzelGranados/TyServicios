@@ -7,7 +7,6 @@ with open('Matriz/csv/CriterioResolucion.csv', 'r') as file:
     headers = next(reader)
     i = 2
     for row in reader:
-        # 3 y 4
         fed_est = NivelDeGobierno.objects.get(nombre=row[3])
         ley_reg = OrdenamientoJuridico.objects.get(nombre=row[4])
         resolucion = CriterioResolucion(nombre_criterio=row[2], nivel=fed_est, ley_reglamento=ley_reg, nombre=row[5],
