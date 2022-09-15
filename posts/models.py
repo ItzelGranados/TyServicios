@@ -105,6 +105,7 @@ class CriterioResolucion(models.Model):
 
 class Requisito(models.Model):
     nombre_requisito = models.TextField(max_length=500, null=True, blank=True, verbose_name="Nombre del requisito")
+    numero_requisito = models.IntegerField(null=True, blank=True, verbose_name="Numero de requisito")
     federal_estatal = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, null=True, blank=True, related_name="+")
     ley_reglamento = models.ForeignKey(OrdenamientoJuridico, on_delete=models.PROTECT, null=True, blank=True, related_name="+")
     nombre = models.CharField(max_length=255, null=True, blank=True, verbose_name="Nombre")

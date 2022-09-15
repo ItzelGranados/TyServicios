@@ -1,5 +1,5 @@
 from posts.models import DatoGeneral, Tipo, TipoTramite, NivelDeGobierno, Ambito, OrdenamientoJuridico, OriginalCopia, \
-    Paso, TipoResolucion, TipoSolicitante
+    Paso, TipoResolucion, TipoSolicitante, Requisito
 
 import csv
 
