@@ -13,6 +13,7 @@
 <body>
 <!---------------------------------------------------Encabezado-------------------------------------------------->
     <div class="centro">
+    <table class="table table-bordered">
     <h1 class="title">Ficha para revisión</h1>
     <h2 class="title">Registro municipal de trámites y servicios</h2>
 
@@ -459,11 +460,11 @@
         </tr>
 
         <tr>
-            <td>{% for i in object.a_fundamento_plazo_maximo %}
+            <td>{% for i in object.a_fundamento_plazo_maximo.all %}
                 {{i}}
             {% endfor %}</td>
             <td>
-                {% for i in t_fundamento_plazo_maximo %}
+                {% for i in t_fundamento_plazo_maximo.all %}
                 {{i}}
                 {% endfor %}
             </td>
@@ -503,8 +504,13 @@
         </tr>
 
         <tr>
-            <td>{{object.ambito_fundamento_ficta}}</td>
-            <td>{{object.tipo_fundamento_ficta}}</td>
+            <td>{% for i in object.ambito_fundamento_ficta.all %}
+                {{i}}
+            {% endfor %}</td>
+            <td>
+                {% for i in object.tipo_fundamento_ficta.all %}
+                {{i}}
+            {% endfor %}</td>
         </tr>
     </table>
 
@@ -587,7 +593,10 @@
             <th>Vigencia</th>
          </tr>
         <tr>
-            <td>{{object.tipo_resolucion}}</td>
+            <td>
+                {% for i in object.tipo_resolucion.all %}
+                {{i}}
+            {% endfor %}</td>
             <td>{{object.vigencia}}</td>
         </tr>
     </table>
@@ -600,7 +609,9 @@
             <th>Fundamento del criterio de resolución</th>
         </tr>
         <tr>
-            <td>{{object.fundamento_resolucion}}</td>
+            <td>{% for i in object.fundamento_resolucion.all %}
+                {{i}}
+            {% endfor %}</td>
         </tr>
     </table>
 
@@ -714,7 +725,10 @@
         </tr>
 
         <tr>
-            <td>{{object.persona_solicitante}}</td>
+            <td>
+                {% for i in object.persona_solicitante %}
+                {{i}}
+            {% endfor %}</td>
             <td>{{object.funcionalidad_tramite}}</td>
             <td>{{object.caso_solicitud}}</td>
         </tr>
@@ -859,8 +873,13 @@
         </tr>
 
         <tr>
-            <td>{{object.ambito_inspeccion_verificacion}}</td>
-            <td>{{object.tipo_inspeccion_verificacion}}</td>
+            <td>
+                {% for i in object.ambito_inspeccion_verificacion.all %}
+                {{i}}
+            {% endfor %}</td>
+            <td>{% for i in object.tipo_inspeccion_verificacion.all %}
+                {{i}}
+            {% endfor%}</td>
         </tr>
     </table>
 
@@ -899,8 +918,12 @@
         </tr>
 
         <tr>
-            <td>{{object.ambito_informacion}}</td>
-            <td>{{object.tipo_informacion}}</td>
+            <td>{% for i in object.ambito_informacion.all %}
+                {{i}}
+            {% endfor %}</td>
+            <td>{% for i in tipo_informacion.all %}
+                {{i}}
+            {% endfor %}</td>
         </tr>
     </table>
 
@@ -996,7 +1019,7 @@
     </tr>
     </table>
 
-
+</table>
    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

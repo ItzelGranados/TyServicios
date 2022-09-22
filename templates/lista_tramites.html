@@ -19,12 +19,18 @@
 <h1 class="title">Ficha para revisión</h1>
 <h2 class="title">Registro municipal de trámites y servicios</h2>
 
+
 <table class="table table-bordered">
-    {% for item in object_list %}
+
         <tr>
-        <td><a href="/tramites/{{item.pk}}">{{ item.homoclave }} : {{ item.nombre_tramite }}</a></td>
-        <td>{{ item.homoclave }}</td>
-        <td>{{ item.homoclave_anterior }}</td>
+            <th> Homoclave </th>
+             <th> Nombre </th>
+        </tr>
+
+        <tr>
+            {% for item in object_list %}
+                <td><a href="/tramites/{{item.pk}}">{{ item.homoclave }}</a></td>
+                <td>{{ item.nombre_tramite }}</td>
         </tr>
     {% endfor %}
 

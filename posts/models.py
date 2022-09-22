@@ -328,3 +328,9 @@ class DatoGeneral(models.Model):
 
     class Meta:
         ordering = ['homoclave']
+
+    def conversion_bool(self, instance):
+        if instance == True:
+            return "Sí"
+        else:
+            return "No"
