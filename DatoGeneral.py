@@ -1,5 +1,5 @@
 from posts.models import DatoGeneral, Tipo, TipoTramite, NivelDeGobierno, Ambito, OrdenamientoJuridico, OriginalCopia, \
-    Paso, TipoResolucion, TipoSolicitante, Requisito
+    Paso, TipoResolucion, TipoSolicitante, Requisito, CriterioResolucion, Modalidad, UbicacionPago, FormaPago, EtapaPago
 
 import csv
 
@@ -126,6 +126,36 @@ with open('Matriz/csv/DatoGeneral.csv', 'r') as file:
         numRequisito = [Requisito.objects.get(numero_requisito=requisito) for requisito in listaDeRequisitos]
 
         resolucion.requisitos.add(*numRequisito)
+
+        listaDeModalidad = list(row[32].split(',')) if (row[32] != 'No aplica') else [0]
+        tipModalidad = [Modalidad.objects.get(nombre=modalidad) for modalidad in
+                        listaDeModalidad]
+
+        resolucion.modalidades.add(*tipModalidad)
+
+        listaDeUbic = list(row[45].split(',')) if (row[45] != 'No Aplica') else ['No aplica']
+        ubicacionPag = [UbicacionPago.objects.get(nombre=ubicacion) for ubicacion in
+                        listaDeUbic]
+
+        resolucion.realizar_pago.add(*ubicacionPag)
+
+        listaDePago = list(row[46].split(',')) if (row[46] != 'No Aplica') else ['No aplica']
+        tipPago = [FormaPago.objects.get(nombre=pago) for pago in
+                   listaDePago]
+
+        resolucion.forma_pago.add(*tipPago)
+
+        listaDeEtapa = list(row[47].split(',')) if (row[47] != 'No Aplica') else ['No aplica']
+        tipEtaoa = [EtapaPago.objects.get(nombre=etapa) for etapa in
+                    listaDeEtapa]
+
+        resolucion.etapa_tramite.add(*tipEtaoa)
+
+        listaDeResolucion = list(map(int, row[76].split(','))) if (row[76] != 'No aplica') else [0]
+        numResolucion = [CriterioResolucion.objects.get(numero_resolucion=resolucion) for resolucion in
+                         listaDeResolucion]
+
+        resolucion.fundamento_resolucion.add(*numResolucion)
 
         print("Listo", i)
         i = i + 1
