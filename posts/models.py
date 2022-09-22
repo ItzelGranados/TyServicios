@@ -93,6 +93,7 @@ class EtapaPago(models.Model):
 
 class CriterioResolucion(models.Model):
 
+    numero_resolucion = models.IntegerField(null=True, blank=True, verbose_name="Numero de resolución")
     nombre_criterio = models.CharField(max_length=250, null=True, blank=True, verbose_name="Nombre criterio")
     nivel = models.ForeignKey(NivelDeGobierno, on_delete=models.PROTECT, null=True, blank=True, related_name="+")
     ley_reglamento = models.ForeignKey(OrdenamientoJuridico, on_delete=models.PROTECT, null=True, blank=True, related_name="+")
