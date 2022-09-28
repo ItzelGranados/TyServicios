@@ -49,12 +49,8 @@
         </tr>
         <tr>
             <td>{{ object.homoclave }}</td>
-            <td> {% for i in object.tipo.all %}
-               {{ i }}
-            {% endfor %} </td>
-            <td> {% for i in object.tipo_tramite.all %}
-               {{ i }}
-            {% endfor %} </td>
+            <td> {{ object.tipo }} </td>
+            <td> {{ object.tipo_tramite }} </td>
         </tr>
     </table>
 
@@ -68,16 +64,13 @@
         <tr>
             <td>{{ object.depedencia }}</td>
             <td>{{ object.unidad_administrativa }}</td>
-             <td> {% for i in object.nivel_gobierno.all %}
-               {{ i }}
-            {% endfor %}</td>
+             <td> {{ object.nivel_gobierno }}</td>
         </tr>
     </table>
 
     <table class="table table-bordered">
         <tr>
             <th> Descripción</th>
-
         </tr>
         <tr>
             <td>{{object.descripcion_principal}}</td>
@@ -93,12 +86,8 @@
         </tr>
 
         <tr>
-            <td></td>{% for i in object.ambito_fundamento_origen.all %}
-                {{ i }}
-            {% endfor %} </td>
-           <td>{% for i in object.tipo_fundamento_origen.all %}
-               {{ i }}
-            {% endfor %}</td>
+            <td>{{ object.ambito_fundamento_origen }} </td>
+           <td>{{ object.tipo_fundamento_origen }}</td>
         </tr>
     </table>
 
@@ -144,9 +133,7 @@
             <th> Requisito detallado </th>
         </tr>
         <tr>
-            <td> {% for i in object.requisito.nombre_requisito.all %}
-                {{i}}
-                {% endfor %}
+            <td> {{ object.nombre_requisito }}
             </td>
         </tr>
     </table>
@@ -158,9 +145,7 @@
             <th> Forma parte del formato </th>
         </tr>
         <tr>
-            <td> {% for i in object.original_copia.all %}
-               {{ i }}
-            {% endfor %}</td>
+            <td> {{ object.original_copia }}</td>
             <td>{{ object.descripcion}}</td>
             <td>{% for i in formato %}
                 {{ i }}
@@ -725,10 +710,7 @@
         </tr>
 
         <tr>
-            <td>
-                {% for i in object.persona_solicitante %}
-                {{i}}
-            {% endfor %}</td>
+
             <td>{{object.funcionalidad_tramite}}</td>
             <td>{{object.caso_solicitud}}</td>
         </tr>

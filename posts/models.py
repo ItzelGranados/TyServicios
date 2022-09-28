@@ -145,6 +145,7 @@ class DatoGeneral(models.Model):
     descripcion = models.CharField(max_length=200, null=True, blank=True, verbose_name="Descripción")
 
     formato = models.BooleanField(default=False, null=True, blank=True, verbose_name="¿Forma parte del formato?")
+
     naturaleza = models.TextField(null=True, blank=True, verbose_name="Naturaleza")
     tiempo_promedio = models.IntegerField(null=True, blank=True,
                                           verbose_name="Tiempo promedio en conseguir el requisito para su presentación (horas)")
@@ -330,8 +331,8 @@ class DatoGeneral(models.Model):
     class Meta:
         ordering = ['homoclave']
 
-    def conversion_bool(self, instance):
-        if instance == True:
-            return "Sí"
-        else:
+    def conversion_bool(self, value):
+        if value == False:
             return "No"
+        else:
+            return "Si"
