@@ -1,3 +1,5 @@
+# Exportar dB: dumpdata --natural-foreign --natural-primary -e contenttypes -e auth.Permission --indent 2 > db.json
+
 #!/usr/bin/env python
 """Django's command-line utility for administrative tasks."""
 import os
