@@ -133,7 +133,11 @@
             <th> Requisito detallado </th>
         </tr>
         <tr>
-            <td> {{ object.nombre_requisito }}
+            <td> {% for i in object.requisitos.all %}
+                <ul>
+                    {{ i }}
+                </ul>
+                {% endfor %}
             </td>
         </tr>
     </table>
