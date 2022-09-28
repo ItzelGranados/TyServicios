@@ -101,7 +101,7 @@ class CriterioResolucion(models.Model):
     articulo = models.CharField(max_length=250, null=True, blank=True, verbose_name="Artículo")
     fraccion = models.CharField(max_length=250, null=True, blank=True, verbose_name="Fracción y/o inciso")
     def __str__(self):
-        return self.nombre
+        return self.nombre_criterio
 
 
 class Requisito(models.Model):
