@@ -115,7 +115,7 @@ class Requisito(models.Model):
 
 
     def __str__(self):
-        return self.nombre
+        return self.nombre_requisito
 
 
 class DatoGeneral(models.Model):
