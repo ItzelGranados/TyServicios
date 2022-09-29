@@ -1,7 +1,11 @@
 from posts.models import DatoGeneral, Tipo, TipoTramite, NivelDeGobierno, Ambito, OrdenamientoJuridico, OriginalCopia, \
     Paso, TipoResolucion, TipoSolicitante, Requisito, CriterioResolucion, Modalidad, UbicacionPago, FormaPago, EtapaPago
-
+from functions import no_aplica
+import json
 import csv
+
+with open("Matriz/norm.json", 'r') as data:
+    dictNorm = json.load(data)
 
 with open('Matriz/csv/DatoGeneral.csv', 'r') as file:
     DatoGeneral.objects.all().delete()
@@ -9,37 +13,38 @@ with open('Matriz/csv/DatoGeneral.csv', 'r') as file:
     headers = next(reader)
     i = 2
     for row in reader:
-        tipoTram = Tipo.objects.get(nombre=row[3])
-        ley_reg = TipoTramite.objects.get(nombre=row[4])
+        tipoTram = Tipo.objects.get(nombre=no_aplica(row[3], dictNorm["Tipos"]))
+        ley_reg = TipoTramite.objects.get(nombre=no_aplica(row[4], dictNorm["Tramites"]))
 
-        niv_gob = NivelDeGobierno.objects.get(nombre=row[7])
+        niv_gob = NivelDeGobierno.objects.get(nombre=no_aplica(row[7], dictNorm["NivelGobierno"]))
 
-        Amb_fun = Ambito.objects.get(nombre=row[9])
-        Tip_fun = OrdenamientoJuridico.objects.get(nombre=row[10])
+        Amb_fun = Ambito.objects.get(nombre=no_aplica(row[9], dictNorm["Ambitos"]))
+        Tip_fun = OrdenamientoJuridico.objects.get(nombre=no_aplica(row[10], dictNorm["Ordenamiento"]))
 
-        Ori_cop = OriginalCopia.objects.get(nombre=row[16])
-        Amb_req = NivelDeGobierno.objects.get(nombre=row[25])
-        Tip_req = OrdenamientoJuridico.objects.get(nombre=row[26])
+        Ori_cop = OriginalCopia.objects.get(nombre=no_aplica(row[16], dictNorm["OriginalCopia"]))
+        Amb_req = NivelDeGobierno.objects.get(nombre=no_aplica(row[25], dictNorm["NivelGobierno"]))
+        Tip_req = OrdenamientoJuridico.objects.get(nombre=no_aplica(row[26], dictNorm["Ordenamiento"]))
 
-        Amb_fun_med = NivelDeGobierno.objects.get(nombre=row[33])
-        Tip_fun_med = OrdenamientoJuridico.objects.get(nombre=row[34])
+        Amb_fun_med = NivelDeGobierno.objects.get(nombre=no_aplica(row[33], dictNorm["NivelGobierno"]))
+        Tip_fun_med = OrdenamientoJuridico.objects.get(nombre=no_aplica(row[34], dictNorm["Ordenamiento"]))
 
-        Pasos = Paso.objects.get(nombre=row[38])
-        Amb_fun_der = Ambito.objects.get(nombre=row[50])
-        Tip_fun_der = OrdenamientoJuridico.objects.get(nombre=row[51])
+        Pasos = Paso.objects.get(nombre=no_aplica(row[38], dictNorm["Pasos"]))
+        Amb_fun_der = Ambito.objects.get(nombre=no_aplica(row[50], dictNorm["Ambitos"]))
+        Tip_fun_der = OrdenamientoJuridico.objects.get(nombre=no_aplica(row[51], dictNorm["Ordenamiento"]))
 
-        A_fun_der = Ambito.objects.get(nombre=row[59])
-        T_fun_pla = OrdenamientoJuridico.objects.get(nombre=row[60])
+        A_fun_der = Ambito.objects.get(nombre=no_aplica(row[59], dictNorm["Ambitos"]))
+        T_fun_pla = OrdenamientoJuridico.objects.get(nombre=no_aplica(row[60], dictNorm["Ordenamiento"]))
 
-        Amb_fun_fic = Ambito.objects.get(nombre=row[64])
-        Tip_fun_fic = OrdenamientoJuridico.objects.get(nombre=row[65])
+        Amb_fun_fic = Ambito.objects.get(nombre=no_aplica(row[64], dictNorm["Ambitos"]))
+        Tip_fun_fic = OrdenamientoJuridico.objects.get(nombre=no_aplica(row[65], dictNorm["Ordenamiento"]))
 
-        Tip_res = TipoResolucion.objects.get(nombre=row[75])
-        Per_sol = TipoSolicitante.objects.get(nombre=row[92])
-        Amb_ins = Ambito.objects.get(nombre=row[116])
-        Tip_ins = Tipo.objects.get(nombre=row[117])
-        Amb_inf = Ambito.objects.get(nombre=row[122])
-        Tip_inf = OrdenamientoJuridico.objects.get(nombre=row[123])
+        Tip_res = TipoResolucion.objects.get(nombre=no_aplica(row[75], dictNorm["Resoluciones"]))
+        Per_sol = TipoSolicitante.objects.get(nombre=no_aplica(row[92], dictNorm["Solicitantes"]))
+        Amb_ins = Ambito.objects.get(nombre=no_aplica(row[116], dictNorm["Ambitos"]))
+
+        Tip_ins = Tipo.objects.get(nombre=no_aplica(row[117], dictNorm["Tipos"]))
+        Amb_inf = Ambito.objects.get(nombre=no_aplica(row[122], dictNorm["Ambitos"]))
+        Tip_inf = OrdenamientoJuridico.objects.get(nombre=no_aplica(row[123], dictNorm["Ordenamiento"]))
 
         # Requisito.objects.get(numero_requisito=row[15])
 

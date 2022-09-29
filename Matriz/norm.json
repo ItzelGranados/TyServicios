@@ -1,0 +1,15 @@
+{
+    "Ambitos" : ["Afirmativa", "Negativa", "Municipal", "Estatal", "Federal"],
+    "EtapaPagos" : ["Previo a la resolución", "Posterior al inicio"],
+    "FormaPagos" : ["Efectivo", "Cheque", "Tarjeta débito", "Tarjeta de crédito", "Transferencia SPEI", "Referencia bancaria"],
+    "Modalidades" : ["Presencial", "En línea", "Telefónica", "Correo electrónico"],
+    "NivelGobierno" : ["Federal", "Estatal", "Municipal"],
+    "Ordenamiento" : ["Constitución", "Lineamiento", "Ley", "Reglamento", "Manual", "Código", "Acuerdo", "Norma"],
+    "OriginalCopia" : ["Original", "Copia", "Original y Copia"],
+    "Pasos" : ["Recepción de documentos", "Realizar pago", "Análisis de la información", "Resolución del trámite","Recepción de documentos, Realizar pago, Análisis de la información, Resolución del trámite","Recepción de documentos, Análisis de la información, Resolución del trámite"],
+    "Resoluciones" : ["Autorización", "Dictamen", "Folio", "Resolución", "Resolución Administrativa", "Acta", "Cédula","Certificación", "Constancia", "Licencia", "Oficio", "Permisos", "Tarjeta"],
+    "Solicitantes": ["Persona Física", "Persona Moral", "Personas Física y Moral"],
+    "Tramites" : ["Acta", "Autorización", "Cédula", "Certificación", "Constancia", "Dictamen", "Folio", "Licencia", "Oficio", "Permisos", "Resolución", "Tarjeta"],
+    "Tipos" : ["Reglamento", "Servicio", "Trámite"],
+    "UbicacionPagos" : ["Cajas de Municipio", "Transferencia SPEI", "Oxxo", "Pago en línea", "Bancos"]
+}
