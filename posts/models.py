@@ -251,7 +251,7 @@ class DatoGeneral(models.Model):
                                     verbose_name="Liga del trámite con que está vincualdo")
 
     resolucion_requisito = models.BooleanField(default=False, verbose_name="¿La resolución es requisito de otro trámite?")
-    liga_resolución = models.CharField(max_length=200, blank=True, null=True, verbose_name="Liga de la resolución del trámite")
+    liga_resolucion = models.CharField(max_length=200, blank=True, null=True, verbose_name="Liga de la resolución del trámite")
 
     persona_solicitante = models.ForeignKey(TipoSolicitante,on_delete=models.PROTECT, null=True, blank=True, verbose_name="¿Quién puede solicitarlo?")
     funcionalidad_tramite = models.TextField(max_length=400, null=True, blank=True,

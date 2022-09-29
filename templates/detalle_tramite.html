@@ -151,9 +151,7 @@
         <tr>
             <td> {{ object.original_copia }}</td>
             <td>{{ object.descripcion}}</td>
-            <td>{% for i in formato %}
-                {{ i }}
-            {% endfor %}</td>
+            <td>{{ object.formato }}</td>
         </tr>
     </table>
 
@@ -167,9 +165,7 @@
         <tr>
             <td>{{ object.naturaleza}}</td>
             <td>{{ object.tiempo_promedio}}</td>
-            <td>{% for i in object.firma_validacion.all %}
-               {{ i }}
-            {% endfor %}</td>
+            <td>{{object.firma_validacion}}</td>
         </tr>
     </table>
 
@@ -181,13 +177,9 @@
             <th> Nombre de la dependencia, ubicación y medios de contacto </th>
         </tr>
         <tr>
-            <td> {% for i in object.persona_emite.all %}
-               {{ i }}
-            {% endfor %} </td>
+            <td> {{object.persona_emite}} </td>
             <td>{{ object.requisito_solicitado}}</td>
-            <td> {% for i in object.nombre_dependencia.all %}
-                {{ i }}
-            {% endfor %}</td>
+            <td> {{object.nombre_dependencia}}</td>
         </tr>
     </table>
 
@@ -227,12 +219,8 @@
         </tr>
 
         <tr>
-             <td>{% for i in object.ambito_fundamento_medio.all %}
-            {{ i }}
-            {% endfor %}</td>
-            <td>{% for i in object.tipo_fundamento_medio.all %}
-                {{ i }}
-            {% endfor %}</td>
+             <td>{{object.ambito_fundamento_medio}}</td>
+            <td>{{object.tipo_fundamento_medio}}</td>
         </tr>
     </table>
 
@@ -270,9 +258,11 @@
         </tr>
 
         <tr>
-            <td>{% for i in object.pasos.all %}
-                {{i}}
-            {% endfor %}</td>
+            <td>
+                <ul>
+                    {{object.pasos}}
+                </ul>
+            </td>
         </tr>
     </table>
 
@@ -377,13 +367,9 @@
 
         <tr>
             <td>
-                {% for i in object.ambito_fundamento_derechos.all %}
-                {{i}}
-            {% endfor %}</td>
+                {{object.ambito_fundamento_derechos}}</td>
             <td>
-                {% for i in object.tipo_fundamento_derechos.all %}
-                {{i}}
-            {% endfor %}</td>
+                {{object.tipo_fundamento_derechos}}</td>
         </tr>
     </table>
 
@@ -394,7 +380,7 @@
         </tr>
 
         <tr>
-            <td>{{object.nombre_fundamento_derechos}}</td>
+            <td>{{object.nombre_fundamento_derecho}}</td>
         </tr>
     </table>
 
@@ -449,13 +435,9 @@
         </tr>
 
         <tr>
-            <td>{% for i in object.a_fundamento_plazo_maximo.all %}
-                {{i}}
-            {% endfor %}</td>
+            <td>{{object.a_fundamento_plazo_maximo}}</td>
             <td>
-                {% for i in t_fundamento_plazo_maximo.all %}
-                {{i}}
-                {% endfor %}
+                {{object.t_fundamento_plazo_maximo}}
             </td>
         </tr>
     </table>
@@ -493,13 +475,9 @@
         </tr>
 
         <tr>
-            <td>{% for i in object.ambito_fundamento_ficta.all %}
-                {{i}}
-            {% endfor %}</td>
+            <td>{{object.ambito_fundamento_ficta}}</td>
             <td>
-                {% for i in object.tipo_fundamento_ficta.all %}
-                {{i}}
-            {% endfor %}</td>
+                {{object.tipo_fundamento_ficta}}</td>
         </tr>
     </table>
 
@@ -582,10 +560,7 @@
             <th>Vigencia</th>
          </tr>
         <tr>
-            <td>
-                {% for i in object.tipo_resolucion.all %}
-                {{i}}
-            {% endfor %}</td>
+            <td>{{object.tipo_resolucion}}</td>
             <td>{{object.vigencia}}</td>
         </tr>
     </table>
@@ -714,7 +689,7 @@
         </tr>
 
         <tr>
-
+            <td>{{object.persona_solicitante }}</td>
             <td>{{object.funcionalidad_tramite}}</td>
             <td>{{object.caso_solicitud}}</td>
         </tr>
@@ -859,13 +834,8 @@
         </tr>
 
         <tr>
-            <td>
-                {% for i in object.ambito_inspeccion_verificacion.all %}
-                {{i}}
-            {% endfor %}</td>
-            <td>{% for i in object.tipo_inspeccion_verificacion.all %}
-                {{i}}
-            {% endfor%}</td>
+            <td>{{object.ambito_inspeccion_verificacion}}</td>
+            <td>{{object.tipo_inspeccion_verificacion}}</td>
         </tr>
     </table>
 
@@ -904,12 +874,8 @@
         </tr>
 
         <tr>
-            <td>{% for i in object.ambito_informacion.all %}
-                {{i}}
-            {% endfor %}</td>
-            <td>{% for i in tipo_informacion.all %}
-                {{i}}
-            {% endfor %}</td>
+            <td>{{object.ambito_informacion}}</td>
+            <td>{{object.tipo_informacion}}</td>
         </tr>
     </table>
 
