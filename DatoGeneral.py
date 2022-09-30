@@ -98,7 +98,7 @@ with open('Matriz/csv/DatoGeneral.csv', 'r') as file:
                                                 articulo_fundamento_vigencia=row[86],
                                                 fraccion_fundamento_vigencia=row[87], resolucion=row[88],
                                                 liga_tramite=row[89],
-                                                resolucion_requisito=row[90], liga_resolución=row[91],
+                                                resolucion_requisito=row[90], liga_resolucion=row[91],
                                                 persona_solicitante=Per_sol,
                                                 funcionalidad_tramite=row[93], caso_solicitud=row[94],
                                                 actividad_economica=row[95],
