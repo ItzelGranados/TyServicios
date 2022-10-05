@@ -9,7 +9,7 @@ table, img, svg {
 #signaturename {
     border-bottom-width: thick !important;
     text-align: center;
-    font-size: 80%;
+    font-size: 120%;
     margin: 1rem;
 }
 
@@ -64,18 +64,16 @@ a{
 li{
     font-size: x-large;
 }
-/* target all pages */
+/* target all pages
 @page {
   margin: 2cm;
 }
 
-
-/* target left (even-numbered) pages only */
 @page :left {
   margin-right: 2cm;
 }
 
-/* target right (odd-numbered) pages only */
 @page :right {
   margin-left: 2cm;
 }
+*/
