@@ -33,14 +33,24 @@ table{
 th{
     background: black !important;
     text-shadow: #bbccdd;
+    font-size: 10pt;
     border-bottom-width: thick !important;
     color: white;
+}
+
+td{
+    font-size: 10pt;
 }
 
 .title{
     text-align: center;
     background: white !important;
     margin: 2rem;
+}
+
+.title2 {
+    text-align: center;
+    background: white !important;
 }
 
 a{
