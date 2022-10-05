@@ -6,5 +6,5 @@ def no_aplica(datos, array):
     if ouString in ouList:
         return array[ouList.index(ouString)]
     else:
-        print(datos, 'No aplica')
+        #print(datos, 'No aplica')
         return 'No aplica'

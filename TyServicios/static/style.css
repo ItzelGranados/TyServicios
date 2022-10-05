@@ -2,6 +2,25 @@ html{
     margin: auto;
 }
 
+table, img, svg {
+  break-inside: avoid-page;
+}
+
+#signaturename {
+    border-bottom-width: thick !important;
+    text-align: center;
+    font-size: 80%;
+    margin: 1rem;
+}
+
+
+#signatureline {
+    border-bottom-width: thick !important;
+    text-align: center;
+    margin-top: 6rem;
+}
+
+
 h1, h2{
     text-align: center;
     font-palette: light;
@@ -21,6 +40,7 @@ th{
 .title{
     text-align: center;
     background: white !important;
+    margin: 2rem;
 }
 
 a{
@@ -33,4 +53,19 @@ a{
 
 li{
     font-size: x-large;
+}
+/* target all pages */
+@page {
+  margin: 2cm;
+}
+
+
+/* target left (even-numbered) pages only */
+@page :left {
+  margin-right: 2cm;
+}
+
+/* target right (odd-numbered) pages only */
+@page :right {
+  margin-left: 2cm;
 }

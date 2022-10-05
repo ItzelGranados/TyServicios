@@ -6,6 +6,15 @@ import csv
 
 with open("Matriz/norm.json", 'r') as data:
     dictNorm = json.load(data)
+with open("Matriz/csv/Titulares.csv", 'r') as data:
+    reader = csv.reader(data)
+    direccionDict = []
+    titularesDict = []
+    enlaceDict = []
+    for row in reader:
+        direccionDict.append(row[2])
+        titularesDict.append(row[3])
+        enlaceDict.append(row[4])
 
 with open('Matriz/csv/DatoGeneral.csv', 'r') as file:
     DatoGeneral.objects.all().delete()
@@ -47,6 +56,19 @@ with open('Matriz/csv/DatoGeneral.csv', 'r') as file:
         Tip_inf = OrdenamientoJuridico.objects.get(nombre=no_aplica(row[123], dictNorm["Ordenamiento"]))
 
         # Requisito.objects.get(numero_requisito=row[15])
+
+        # po = 0
+        count = 0
+        titular = ""
+        enlace = ""
+        for x in direccionDict:
+            # print(x,"...", row[101])
+            if (x == row[101]):
+                # po = 1
+                encargado = titularesDict[count]
+                subencargado = enlaceDict[count]
+            count += 1
+        # if(po == 0): print(row[101])
 
         # Many to Many 15, 32,
         resolucion = DatoGeneral.objects.create(homoclave_anterior=row[0], homoclave=row[1], nombre_tramite=row[2],
@@ -121,7 +143,8 @@ with open('Matriz/csv/DatoGeneral.csv', 'r') as file:
                                                 solicitudes_recibidas=row[128], total_solicitudes_recibidas=row[129],
                                                 informacion=row[130], informacion_interesado=row[131],
                                                 protesta_ciudadana=row[132],
-                                                cantidad_protestas=row[133], momento_vida=row[134])
+                                                cantidad_protestas=row[133], momento_vida=row[134], titular=encargado,
+                                                enlace=subencargado)
 
         # Separación de la lista de números lo separa por las ',' y después se convierte de string a int
         # y si la entrada es 'No aplica' se retorna el número de requisito 0
